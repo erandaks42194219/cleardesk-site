@@ -14,28 +14,26 @@ Dubai/Auckland clock, the phase timeline, every icon — are drawn in code. Ther
 nothing to upload for those, and they stay sharp on every screen.
 
 
-WHAT YOU STILL NEED TO ADD
---------------------------
-1. eranda-headshot.jpg      800 x 800 px   REQUIRED
-   A real professional photo of you. Plain background, good natural light, business
-   attire, looking at the camera, shoulders up. A phone in portrait mode near a window
-   is completely adequate.
-   Where it goes: /eranda/index.html — replace the dashed placeholder box.
-   This is the highest-value image on the whole site. A UAE buyer wants to know who is
-   actually doing the work.
+ERANDA'S PORTRAIT
+-----------------
+eranda-de-silva-professional-portrait.jpg is the approved website portrait created
+from Eranda's supplied real photograph. It is already placed on /eranda/index.html.
 
-2. eranda-working.jpg       1200 x 800 px   OPTIONAL
+
+OPTIONAL IMAGES TO ADD LATER
+----------------------------
+1. eranda-working.jpg       1200 x 800 px   OPTIONAL
    You at your desk, screen visible, NO client data on screen.
 
-3. deliverable-workbook.png 1200 x 800 px   STRONGLY RECOMMENDED
+2. deliverable-workbook.png 1200 x 800 px   STRONGLY RECOMMENDED
    A screenshot of your colour-coded Excel workbook with every client-identifying
    detail replaced by realistic dummy data. Blue inputs, black formulas, green links,
    yellow flags — visible.
 
-4. deliverable-pdf.png      1200 x 800 px   STRONGLY RECOMMENDED
+3. deliverable-pdf.png      1200 x 800 px   STRONGLY RECOMMENDED
    A screenshot of your branded PDF computation, fully anonymised.
 
-   Items 3 and 4 are better proof of quality than any photograph, and no competitor
+   Items 2 and 3 are better proof of quality than any photograph, and no competitor
    can copy them. REDACT FRAME BY FRAME: no client names, no IRD or TRN numbers, no
    real figures, no email addresses, no visible browser tabs or bookmarks.
 

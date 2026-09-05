@@ -103,7 +103,11 @@
     });
   }
 
-  /* ---------- Reveal on scroll ---------- */
+  /* ---------- Subtle reveal on scroll ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.section .card, .animate-in'), function (el, index) {
+    el.classList.add('reveal');
+    el.style.transitionDelay = Math.min(index % 4, 3) * 70 + 'ms';
+  });
   var revealables = document.querySelectorAll('.reveal');
   if (revealables.length) {
     if (reduced || !('IntersectionObserver' in window)) {
@@ -174,6 +178,51 @@
     });
   });
 
+  /* ---------- Client assurance carousel ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carousel]'), function (carousel) {
+    var slides = carousel.querySelectorAll('.assurance-slide');
+    var dotsWrap = carousel.querySelector('.assurance-dots');
+    var current = 0;
+    var timer;
+    if (!slides.length) return;
+
+    function show(index) {
+      current = (index + slides.length) % slides.length;
+      Array.prototype.forEach.call(slides, function (slide, i) {
+        slide.classList.toggle('active', i === current);
+        slide.setAttribute('aria-hidden', i === current ? 'false' : 'true');
+      });
+      if (dotsWrap) {
+        Array.prototype.forEach.call(dotsWrap.children, function (dot, i) {
+          dot.classList.toggle('active', i === current);
+          dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+        });
+      }
+    }
+    function restart() {
+      if (reduced) return;
+      window.clearInterval(timer);
+      timer = window.setInterval(function () { show(current + 1); }, 6500);
+    }
+    if (dotsWrap) {
+      Array.prototype.forEach.call(slides, function (_, i) {
+        var dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', 'Show assurance ' + (i + 1));
+        dot.addEventListener('click', function () { show(i); restart(); });
+        dotsWrap.appendChild(dot);
+      });
+    }
+    var prev = carousel.querySelector('[data-carousel-prev]');
+    var next = carousel.querySelector('[data-carousel-next]');
+    if (prev) prev.addEventListener('click', function () { show(current - 1); restart(); });
+    if (next) next.addEventListener('click', function () { show(current + 1); restart(); });
+    carousel.addEventListener('mouseenter', function () { window.clearInterval(timer); });
+    carousel.addEventListener('mouseleave', restart);
+    show(0);
+    restart();
+  });
+
   /* ---------- BOTIM app launcher ---------- */
   document.addEventListener('DOMContentLoaded', function () {
     var launcher = document.createElement('a');
@@ -184,6 +233,13 @@
     launcher.setAttribute('aria-label', 'Open BOTIM to contact ClearDesk on +64 20 4010 1914');
     launcher.innerHTML = '<span>Open BOTIM</span>';
     document.body.appendChild(launcher);
+
+    var whatsapp = document.createElement('a');
+    whatsapp.className = 'quick-whatsapp';
+    whatsapp.href = 'https://wa.me/642040101914?text=' + encodeURIComponent('Hello ClearDesk, I would like to discuss your services.');
+    whatsapp.setAttribute('aria-label', 'Contact ClearDesk on WhatsApp');
+    whatsapp.innerHTML = '<span>WhatsApp</span>';
+    document.body.appendChild(whatsapp);
 
     document.addEventListener('click', function (event) {
       var link = event.target.closest('[data-botim]');

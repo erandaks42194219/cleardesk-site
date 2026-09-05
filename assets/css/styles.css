@@ -907,6 +907,52 @@ body.nav-open { overflow: hidden; }
   padding: var(--s5); color: var(--muted); font-size: var(--fs-xs); line-height: 1.6;
 }
 
+.director-portrait {
+  position: relative; margin: 0 auto; max-width: 440px; overflow: hidden;
+  border-radius: 24px; background: #d9d7d3;
+  box-shadow: 0 24px 60px rgba(10,22,40,.24);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.director-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4/5; object-fit: cover; object-position: 50% 34%; }
+.director-portrait figcaption {
+  position: absolute; left: 18px; right: 18px; bottom: 18px;
+  padding: 13px 16px; border-radius: 12px;
+  background: rgba(10,22,40,.88); color: #fff;
+  font-family: var(--font-head); font-weight: 700; line-height: 1.25;
+  backdrop-filter: blur(8px);
+}
+.director-portrait figcaption span { color: #c6d3e4; font-family: var(--font-body); font-size: var(--fs-xs); font-weight: 500; }
+
+.assurance-carousel {
+  position: relative; overflow: hidden; border-radius: 22px;
+  background: var(--navy); color: #fff;
+  box-shadow: 0 20px 50px rgba(10,22,40,.16);
+}
+.assurance-track { position: relative; min-height: 260px; }
+.assurance-slide {
+  position: absolute; inset: 0; display: grid; align-content: center;
+  padding: clamp(34px, 7vw, 68px); opacity: 0; transform: translateX(24px);
+  pointer-events: none; transition: opacity .45s var(--ease), transform .45s var(--ease);
+}
+.assurance-slide.active { opacity: 1; transform: none; pointer-events: auto; }
+.assurance-slide h3 { color: #fff; max-width: 720px; margin-bottom: 10px; }
+.assurance-slide p { color: #c6d3e4; max-width: 720px; margin: 0; font-size: var(--fs-md); }
+.assurance-number { color: var(--amber); font-family: var(--font-head); font-weight: 800; letter-spacing: .08em; margin-bottom: 12px; }
+.assurance-controls { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 0 24px 24px; }
+.assurance-controls > button, .assurance-dots button {
+  border: 1px solid rgba(255,255,255,.28); background: transparent; color: #fff; cursor: pointer;
+}
+.assurance-controls > button { width: 38px; height: 38px; border-radius: 50%; font-size: 18px; }
+.assurance-controls > button:hover { background: rgba(255,255,255,.1); }
+.assurance-dots { display: flex; align-items: center; gap: 8px; }
+.assurance-dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; }
+.assurance-dots button.active { width: 25px; border-radius: 8px; background: var(--amber); border-color: var(--amber); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease); }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(10,22,40,.10); }
+}
+
 
 /* --- 27. Fixes ---------------------------------------------------------- */
 /* Strong text must stay readable on the dark hero variants */
@@ -994,3 +1040,26 @@ body.nav-open { overflow: hidden; }
 }
 @media (min-width: 900px) { .quick-botim { bottom: 24px; right: 24px; } }
 @media print { .quick-botim { display: none !important; } }
+
+.quick-whatsapp {
+  position: fixed; right: 16px; bottom: 76px; z-index: 30;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 16px; border-radius: 999px;
+  background: #147a43; color: #fff; font-weight: 700;
+  box-shadow: 0 10px 28px rgba(10,22,40,.20);
+}
+.quick-whatsapp:hover, .quick-whatsapp:focus-visible { background: #0f6034; color: #fff; }
+.quick-whatsapp::before {
+  content: "W"; display: inline-grid; place-items: center;
+  width: 23px; height: 23px; border: 2px solid currentColor; border-radius: 50%;
+  font-size: 12px; font-weight: 800; line-height: 1;
+}
+@media (min-width: 900px) { .quick-whatsapp { bottom: 84px; right: 24px; } }
+@media (max-width: 430px) {
+  .quick-botim, .quick-whatsapp { padding: 12px 14px; }
+  .quick-botim span, .quick-whatsapp span { display: none; }
+}
+@media print { .quick-whatsapp { display: none !important; } }
+
+.btn-whatsapp { background: #147a43; border-color: #147a43; color: #fff; }
+.btn-whatsapp:hover, .btn-whatsapp:focus-visible { background: #0f6034; border-color: #0f6034; color: #fff; }

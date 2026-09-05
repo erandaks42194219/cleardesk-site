@@ -1,6 +1,6 @@
 CLEARDESK WEBSITE — cleardesk.co.nz
 ====================================
-Built 4 September 2026. 30 pages. Plain HTML, CSS and JavaScript.
+Updated 5 September 2026. 29 HTML pages. Plain HTML, CSS and JavaScript.
 No frameworks, no build step, no npm. You can open any file and edit the text.
 
 
@@ -15,7 +15,7 @@ WHAT IS HERE
 ------------
 index.html ................... Home
 404.html ..................... "Page not found"
-CNAME ........................ Tells GitHub the domain is cleardesk.co.nz
+CNAME-FOR-LATER.txt .......... Keep this until the GitHub test site is approved
 robots.txt, sitemap.xml ...... For Google
 assets/css/styles.css ........ ALL the styling for the whole site, one file
 assets/js/main.js ............ Menu, dropdowns, countdowns, FAQ toggles
@@ -44,31 +44,25 @@ nz/ .......................... 6 pages, the New Zealand tree
 about/  eranda/  contact/  insights/  thank-you/  legal/privacy/  legal/terms/
 
 
-DO THESE FIVE THINGS BEFORE YOU PUBLISH
+DO THESE FOUR THINGS BEFORE YOU PUBLISH
 ---------------------------------------
-1. ADD YOUR PHOTO
-   /eranda/index.html has a dashed placeholder box. Save a real headshot as
-   assets/img/eranda-headshot.jpg (800x800) and replace that box with:
-   <img src="../assets/img/eranda-headshot.jpg" alt="Eranda De Silva, Director of
-   ClearDesk Business Services" style="border-radius:12px">
-
-2. CONFIRM YOUR NZ PRICES
+1. CONFIRM YOUR NZ PRICES
    /nz/pricing/index.html deliberately has NO prices on it, with an honest note
    saying they are being confirmed. Old figures would be misleading under the Fair
    Trading Act. Put your current prices in, or leave the note — both are safe.
 
-3. TEST THE CONTACT OPTIONS
+2. TEST THE CONTACT OPTIONS
    The contact form opens the visitor's email app with their enquiry prepared for
    info@cleardesk.co.nz. BOTIM buttons copy the ClearDesk number and open the BOTIM app.
-   Test both from your phone after the GitHub preview is live.
+   WhatsApp opens a prepared chat. A direct mobile-call link is also included.
+   Test all three from your phone after the GitHub preview is live.
 
-4. GET THE LEGAL PAGES REVIEWED
-   /legal/privacy/ and /legal/terms/ are marked DRAFT at the top. You already have a
-   Privacy Policy v2.0 and Terms in your GitHub repository — merge them, then have
-   the result reviewed. The UAE-facing terms need a UAE-qualified adviser, not the
-   NZ version with the country name changed.
+3. GET THE LEGAL PAGES REVIEWED
+   /legal/privacy/ and /legal/terms/ contain publishable website wording, but should
+   still be checked against your signed engagement documents and reviewed by an
+   appropriately qualified adviser before the main-domain launch.
 
-5. DECIDE ON THE "XERO CERTIFIED" CLAIM
+4. DECIDE ON THE "XERO CERTIFIED" CLAIM
    It appears NOWHERE on this site, on purpose, because it was flagged as unverified.
    Verify it first if you want to use it.
 
@@ -83,9 +77,8 @@ These are legal boundaries, not style choices. Do not add them back in:
     you are a nominated person with Inland Revenue, not a Listed Tax Agent.
   - It never implies a UAE office, address, phone number or local team.
   - It contains no guaranteed savings, refund figures or penalty-avoidance promises.
-  - It contains no invented people, clients, testimonials or reviews. There is no
-    testimonials section, because you have no consented quotes yet. Add one when you
-    have real ones.
+  - It contains no invented people, clients, testimonials or reviews. The client
+    assurance carousel states service standards rather than unapproved quotations.
   - Every tool and reference page carries a "general information only, not
     personalised advice" notice.
   - No competitor is named or priced. Comparisons use generic market ranges only.
@@ -111,7 +104,7 @@ Follow 05-PUBLISHING-GUIDE.md from the pack. Short version:
   1. github.com > new PUBLIC repository called cleardesk-site
   2. Drag everything inside this folder into the upload page
   3. Settings > Pages > Deploy from branch > main > / (root)
-  4. Test at https://erandaks4219.github.io/cleardesk-site/
+  4. Test at https://erandaks42194219.github.io/cleardesk-site/
   5. Only then point cleardesk.co.nz at it with the DNS records in the guide
   6. DO NOT touch your MX records — that is your email
 
