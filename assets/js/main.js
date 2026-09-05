@@ -463,4 +463,42 @@
         '&body=' + encodeURIComponent(lines.join('\n'));
     });
   });
+
+  /* ---------- Careers: choose a pathway and prepare an email ---------- */
+  document.addEventListener('DOMContentLoaded', function () {
+    var careerForm = document.getElementById('careerForm');
+    var roleField = document.getElementById('careerRole');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-role-choice]'), function (button) {
+      button.addEventListener('click', function () {
+        if (roleField) roleField.value = button.getAttribute('data-role-choice') || '';
+        var apply = document.getElementById('apply');
+        if (apply) apply.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+        window.setTimeout(function () { if (roleField) roleField.focus(); }, reduced ? 0 : 500);
+      });
+    });
+    if (!careerForm) return;
+    careerForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (!careerForm.reportValidity()) return;
+      var data = new FormData(careerForm);
+      var lines = [
+        'CAREER EXPRESSION OF INTEREST',
+        '',
+        'Name: ' + (data.get('name') || ''),
+        'Email: ' + (data.get('email') || ''),
+        'Phone: ' + (data.get('phone') || ''),
+        'Current location: ' + (data.get('location') || ''),
+        'Area of interest: ' + (data.get('role') || ''),
+        'Availability / work rights: ' + (data.get('availability') || ''),
+        '',
+        'Experience summary:',
+        data.get('summary') || '',
+        '',
+        'Please remember to attach your CV before sending this email.'
+      ];
+      var subject = 'Career expression of interest — ' + (data.get('role') || 'ClearDesk') + ' — ' + (data.get('name') || 'Applicant');
+      window.location.href = 'mailto:info@cleardesk.co.nz?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(lines.join('\n'));
+    });
+  });
 })();

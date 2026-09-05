@@ -4,6 +4,14 @@ Updated 5 September 2026.
 
 ## Changes made
 
+- **Version 7:** removed every public ClearDesk service price while preserving package details. UAE and NZ engagements now use private workload-based quotes.
+- Removed the temporary NZ pricing approval notice.
+- Added `/careers/` with three talent pathways and a privacy-conscious expression-of-interest form that prepares an email and does not upload CVs to GitHub Pages.
+- Added `/policies/` covering data protection, security, confidentiality, records, cross-border handling, incidents, responsible technology, third parties, continuity and service concerns.
+- Added separate `/uae/why-cleardesk/` and `/nz/why-cleardesk/` pages with concise benefits, fair in-house comparisons and market-specific operating issues.
+- Added animated market-benefit banners to both market homepages and an accessible orbit graphic on each new benefit page.
+- Added `notes/report-source.md` and `notes/claim-source-ledger.md` with the official sources and reasoning behind the Version 7 content.
+- Added Careers, Policies and market-benefit links throughout the mobile navigation and footer, and updated every asset reference to `?v=7`.
 - **Version 6:** removed the unexplained memberships, qualifications and languages
   strip from the homepage hero.
 - Rebuilt the top announcement carousel as a seven-message “Deadline watch” covering
@@ -39,7 +47,6 @@ Updated 5 September 2026.
 - Added visible staggered hero entrance animations and a restrained floating motion
   for hero visuals, while respecting reduced-motion accessibility settings.
 - Replaced the old static deadline strips so the new rotating bar is consistent site-wide.
-- Removed remaining public-facing references to missing UAE office or local presence.
 - Rechecked the normal header links, local page paths, assets, JavaScript syntax and
   duplicate page IDs before packaging version 4.
 - Reworked `/about/index.html` around the ClearDesk story, values, working standards and client assurance.
