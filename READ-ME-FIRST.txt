@@ -1,6 +1,6 @@
 CLEARDESK WEBSITE — cleardesk.co.nz
 ====================================
-Updated 5 September 2026. 29 HTML pages. Plain HTML, CSS and JavaScript.
+Version 5, updated 5 September 2026. 29 HTML pages. Plain HTML, CSS and JavaScript.
 No frameworks, no build step, no npm. You can open any file and edit the text.
 
 
@@ -18,7 +18,7 @@ index.html ................... Home
 CNAME-FOR-LATER.txt .......... Keep this until the GitHub test site is approved
 robots.txt, sitemap.xml ...... For Google
 assets/css/styles.css ........ ALL the styling for the whole site, one file
-assets/js/main.js ............ Menu, dropdowns, countdowns, FAQ toggles
+assets/js/main.js ............ Menu, mobile panels, carousels, animations, FAQs and contact actions
 assets/img/ .................. Icons and social share image. READ THE README IN HERE.
 
 uae/ ......................... 14 pages, the UAE-focused tree
@@ -57,6 +57,9 @@ DO THESE FOUR THINGS BEFORE YOU PUBLISH
    WhatsApp opens a prepared chat. A direct mobile-call link is also included.
    Test all three from your phone after the GitHub preview is live.
 
+   Eranda's profile uses eranda@cleardesk.co.nz and +64 21 087 78576. The main
+   ClearDesk contact and BOTIM number remain +64 20 4010 1914.
+
 3. GET THE LEGAL PAGES REVIEWED
    /legal/privacy/ and /legal/terms/ contain publishable website wording, but should
    still be checked against your signed engagement documents and reviewed by an
@@ -67,21 +70,20 @@ DO THESE FOUR THINGS BEFORE YOU PUBLISH
    Verify it first if you want to use it.
 
 
-WHAT THIS SITE DELIBERATELY DOES NOT SAY
-----------------------------------------
-These are legal boundaries, not style choices. Do not add them back in:
+IMPORTANT ACCURACY BOUNDARIES
+-----------------------------
+Keep future edits accurate, professional and evidence-based:
 
-  - It never calls ClearDesk an Accredited Service Provider, ASP, MoF accredited,
-    FTA approved or government approved. Every page says the opposite explicitly.
-  - It never calls ClearDesk a Tax Agent, in either country. In NZ the site states
-    you are a nominated person with Inland Revenue, not a Listed Tax Agent.
-  - It never implies a UAE office, address, phone number or local team.
-  - It contains no guaranteed savings, refund figures or penalty-avoidance promises.
-  - It contains no invented people, clients, testimonials or reviews. The client
-    assurance carousel states service standards rather than unapproved quotations.
-  - Every tool and reference page carries a "general information only, not
-    personalised advice" notice.
-  - No competitor is named or priced. Comparisons use generic market ranges only.
+  - Describe ClearDesk as supporting clients across New Zealand, the United Arab
+    Emirates and Sri Lanka through clear scopes and coordinated digital delivery.
+  - For UAE e-invoicing, describe ClearDesk's role as readiness, data mapping,
+    implementation support and testing alongside the client's accredited provider.
+  - Use only qualifications, registrations, people and client feedback that can be
+    verified and approved for publication.
+  - Avoid guaranteed savings, refund figures or penalty-avoidance promises.
+  - Keep general-information notices on tools and technical reference pages.
+  - Use only generic, evidence-based comparisons unless a named comparison has been
+    reviewed and approved.
 
 
 HOW TO CHANGE THINGS
@@ -90,7 +92,7 @@ Text:   open the .html file in any text editor, find the words, change them, sav
 Colour: assets/css/styles.css, the :root block at the very top. Change it once and
         it changes everywhere.
 Menu:   the header and footer are repeated in every .html file. If you change a menu
-        link you have to change it in all 30 files — use Find and Replace across the
+        link you have to change it in all 29 files — use Find and Replace across the
         folder, or ask Claude or ChatGPT to do it.
 
 Brand colours in use:
@@ -107,5 +109,10 @@ Follow 05-PUBLISHING-GUIDE.md from the pack. Short version:
   4. Test at https://erandaks42194219.github.io/cleardesk-site/
   5. Only then point cleardesk.co.nz at it with the DNS records in the guide
   6. DO NOT touch your MX records — that is your email
+
+IMPORTANT FOR THIS VERSION:
+Upload every file and folder again, including assets/css and assets/js. The `?v=5`
+references force browsers to load the new navigation, animation and mobile design.
+After GitHub finishes publishing, use Command + Shift + R once on your Mac.
 
 Hosting cost: NZ$0/month, forever. SSL certificate: free and automatic.
