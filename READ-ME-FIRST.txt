@@ -1,0 +1,118 @@
+CLEARDESK WEBSITE — cleardesk.co.nz
+====================================
+Built 4 September 2026. 30 pages. Plain HTML, CSS and JavaScript.
+No frameworks, no build step, no npm. You can open any file and edit the text.
+
+
+HOW TO LOOK AT IT RIGHT NOW
+---------------------------
+Double-click index.html. It opens in your browser and everything works, including
+the readiness check and the mobile menu. Narrow the window right down to see how it
+looks on a phone.
+
+
+WHAT IS HERE
+------------
+index.html ................... Home
+404.html ..................... "Page not found"
+CNAME ........................ Tells GitHub the domain is cleardesk.co.nz
+robots.txt, sitemap.xml ...... For Google
+assets/css/styles.css ........ ALL the styling for the whole site, one file
+assets/js/main.js ............ Menu, dropdowns, countdowns, FAQ toggles
+assets/img/ .................. Icons and social share image. READ THE README IN HERE.
+
+uae/ ......................... 14 pages, the UAE-focused tree
+  index.html                     UAE home, deadline-led
+  e-invoicing/                   The authority section:
+    index.html                     Full guide — the mandate explained
+    timeline/                      Every date, with live day counters
+    readiness-check/               The free 10-question tool (your lead magnet)
+    choosing-an-asp/               Independent buyer's guide
+    data-fields/                   What your records must contain
+    penalties/                     The penalties, with a worked example
+  finance-automation/            Beyond the mandate
+  bookkeeping-tax-backoffice/    PILLAR TWO — the separate section
+  corporate-tax/  vat/           Tax services
+  small-business-relief/         The 31 Dec 2026 cliff
+  pricing/                       AED price list
+  partners/                      Formation agents and providers
+
+nz/ .......................... 6 pages, the New Zealand tree
+  index.html, e-invoicing/, e-invoicing/government-suppliers/,
+  finance-automation/, bookkeeping-tax-backoffice/, pricing/
+
+about/  eranda/  contact/  insights/  thank-you/  legal/privacy/  legal/terms/
+
+
+DO THESE FIVE THINGS BEFORE YOU PUBLISH
+---------------------------------------
+1. ADD YOUR PHOTO
+   /eranda/index.html has a dashed placeholder box. Save a real headshot as
+   assets/img/eranda-headshot.jpg (800x800) and replace that box with:
+   <img src="../assets/img/eranda-headshot.jpg" alt="Eranda De Silva, Director of
+   ClearDesk Business Services" style="border-radius:12px">
+
+2. CONFIRM YOUR NZ PRICES
+   /nz/pricing/index.html deliberately has NO prices on it, with an honest note
+   saying they are being confirmed. Old figures would be misleading under the Fair
+   Trading Act. Put your current prices in, or leave the note — both are safe.
+
+3. TEST THE CONTACT OPTIONS
+   The contact form opens the visitor's email app with their enquiry prepared for
+   info@cleardesk.co.nz. BOTIM buttons copy the ClearDesk number and open the BOTIM app.
+   Test both from your phone after the GitHub preview is live.
+
+4. GET THE LEGAL PAGES REVIEWED
+   /legal/privacy/ and /legal/terms/ are marked DRAFT at the top. You already have a
+   Privacy Policy v2.0 and Terms in your GitHub repository — merge them, then have
+   the result reviewed. The UAE-facing terms need a UAE-qualified adviser, not the
+   NZ version with the country name changed.
+
+5. DECIDE ON THE "XERO CERTIFIED" CLAIM
+   It appears NOWHERE on this site, on purpose, because it was flagged as unverified.
+   Verify it first if you want to use it.
+
+
+WHAT THIS SITE DELIBERATELY DOES NOT SAY
+----------------------------------------
+These are legal boundaries, not style choices. Do not add them back in:
+
+  - It never calls ClearDesk an Accredited Service Provider, ASP, MoF accredited,
+    FTA approved or government approved. Every page says the opposite explicitly.
+  - It never calls ClearDesk a Tax Agent, in either country. In NZ the site states
+    you are a nominated person with Inland Revenue, not a Listed Tax Agent.
+  - It never implies a UAE office, address, phone number or local team.
+  - It contains no guaranteed savings, refund figures or penalty-avoidance promises.
+  - It contains no invented people, clients, testimonials or reviews. There is no
+    testimonials section, because you have no consented quotes yet. Add one when you
+    have real ones.
+  - Every tool and reference page carries a "general information only, not
+    personalised advice" notice.
+  - No competitor is named or priced. Comparisons use generic market ranges only.
+
+
+HOW TO CHANGE THINGS
+--------------------
+Text:   open the .html file in any text editor, find the words, change them, save.
+Colour: assets/css/styles.css, the :root block at the very top. Change it once and
+        it changes everywhere.
+Menu:   the header and footer are repeated in every .html file. If you change a menu
+        link you have to change it in all 30 files — use Find and Replace across the
+        folder, or ask Claude or ChatGPT to do it.
+
+Brand colours in use:
+  Navy   #0A1628    Blue  #1B5EAE
+  Sky    #4A90D9    Amber #E8A020   (amber is reserved for deadlines and one CTA)
+
+
+PUBLISHING
+----------
+Follow 05-PUBLISHING-GUIDE.md from the pack. Short version:
+  1. github.com > new PUBLIC repository called cleardesk-site
+  2. Drag everything inside this folder into the upload page
+  3. Settings > Pages > Deploy from branch > main > / (root)
+  4. Test at https://erandaks4219.github.io/cleardesk-site/
+  5. Only then point cleardesk.co.nz at it with the DNS records in the guide
+  6. DO NOT touch your MX records — that is your email
+
+Hosting cost: NZ$0/month, forever. SSL certificate: free and automatic.
