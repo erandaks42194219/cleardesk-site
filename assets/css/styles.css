@@ -393,8 +393,8 @@ td strong, th strong { color: var(--navy); }
   height: 3px;
   transform-origin: left;
   background: linear-gradient(90deg, var(--amber), #FFD98A);
-  animation: noticeProgress 5.2s linear infinite;
 }
+.announcement-rotator.is-running::after { animation: noticeProgress 6s linear infinite; }
 .announcement-rotator.is-paused::after { animation-play-state: paused; }
 .announcement-inner {
   min-height: 44px;
@@ -423,8 +423,12 @@ td strong, th strong { color: var(--navy); }
   box-shadow: 0 0 0 5px rgba(232,160,32,.18);
   animation: noticePulse 1.8s ease-in-out infinite;
 }
-.announcement-text {
-  display: block;
+.announcement-copy {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   color: #fff;
   font-size: var(--fs-sm);
   font-weight: 650;
@@ -434,7 +438,25 @@ td strong, th strong { color: var(--navy); }
   transform: translateY(8px);
   transition: opacity .22s var(--ease), transform .22s var(--ease);
 }
-.announcement-text.is-visible { opacity: 1; transform: none; }
+.announcement-copy.is-visible { opacity: 1; transform: none; }
+.announcement-market {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  min-height: 24px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  line-height: 1;
+}
+.announcement-market.market-uae { background: #B32D3A; }
+.announcement-market.market-nz { background: var(--blue); }
+.announcement-text { min-width: 0; }
 .announcement-toggle {
   appearance: none;
   border: 1px solid rgba(255,255,255,.34);
@@ -453,7 +475,8 @@ td strong, th strong { color: var(--navy); }
 @media (max-width: 700px) {
   .announcement-inner { min-height: 52px; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
   .announcement-kicker { display: none; }
-  .announcement-text { text-align: left; font-size: .78rem; }
+  .announcement-copy { justify-content: flex-start; text-align: left; font-size: .78rem; }
+  .announcement-market { min-width: 38px; min-height: 22px; padding: 4px 8px; font-size: .68rem; }
   .announcement-toggle { padding: 5px 9px; }
 }
 

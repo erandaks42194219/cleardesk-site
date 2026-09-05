@@ -4,6 +4,16 @@ Updated 5 September 2026.
 
 ## Changes made
 
+- **Version 6:** removed the unexplained memberships, qualifications and languages
+  strip from the homepage hero.
+- Rebuilt the top announcement carousel as a seven-message “Deadline watch” covering
+  UAE e-invoicing, Corporate Tax, VAT and Small Business Relief, plus New Zealand
+  GST, IR3 and payday filing. Each item now carries a clear UAE or NZ market badge.
+- Matched the carousel timing and progress bar at six seconds per update, retained
+  pause/play controls and kept reduced-motion accessibility support.
+- Verified all deadline wording against the official UAE Ministry of Finance,
+  UAE Federal Tax Authority and New Zealand Inland Revenue pages listed in
+  `DEADLINE-SOURCES.md` on 5 September 2026.
 - **Version 5:** rebuilt the three plain header page links with a separate
   `nav-page-link` class. This keeps them completely outside the dropdown script,
   including when an older browser-cached script is still present.
@@ -24,7 +34,7 @@ Updated 5 September 2026.
   and international mobile format `+64 21 087 78576` (`+642108778576` for calling).
 - Fixed the desktop header navigation bug. Pricing, About and Contact are now normal
   page links; only the two menu buttons control dropdown panels.
-- Added a prominent rotating announcement bar to every page, with three messages,
+- Added a prominent rotating announcement bar to every page, with rotating messages,
   a progress animation and a pause/play control.
 - Added visible staggered hero entrance animations and a restrained floating motion
   for hero visuals, while respecting reduced-motion accessibility settings.

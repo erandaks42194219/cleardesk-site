@@ -7,9 +7,34 @@
 
   /* ---------- Rotating announcement bar ---------- */
   var noticeMessages = [
-    'UAE e-invoicing readiness: organise your invoice data, systems and provider pathway early.',
-    'Finance automation, bookkeeping, tax preparation and dependable back-office support.',
-    'Supporting businesses across New Zealand, the United Arab Emirates and Sri Lanka.'
+    {
+      market: 'UAE',
+      text: 'E-invoicing for revenue below AED 50m: appoint an accredited provider by 31 March 2027 and implement by 1 July 2027.'
+    },
+    {
+      market: 'UAE',
+      text: 'Corporate Tax returns and any payment are generally due within nine months after the end of the tax period.'
+    },
+    {
+      market: 'UAE',
+      text: 'VAT returns and related payments are generally due within 28 days after the end of the tax period.'
+    },
+    {
+      market: 'UAE',
+      text: 'Small Business Relief covers eligible tax periods ending on or before 31 December 2026; eligibility conditions apply.'
+    },
+    {
+      market: 'NZ',
+      text: 'GST returns and payment are generally due on the 28th after the taxable period; 15 January and 7 May exceptions apply.'
+    },
+    {
+      market: 'NZ',
+      text: 'IR3 income tax returns are generally due 7 July unless a tax-agent or other extension of time applies.'
+    },
+    {
+      market: 'NZ',
+      text: 'Electronic payday employment information is due within two working days of each payday.'
+    }
   ];
   var firstHeader = document.querySelector('.site-header');
   if (firstHeader && !document.querySelector('.announcement-rotator')) {
@@ -18,12 +43,17 @@
     notice.setAttribute('role', 'region');
     notice.setAttribute('aria-label', 'ClearDesk updates');
     notice.innerHTML = '<div class="container announcement-inner">' +
-      '<span class="announcement-kicker">ClearDesk update</span>' +
-      '<span class="announcement-text" aria-live="polite"></span>' +
+      '<span class="announcement-kicker">Deadline watch</span>' +
+      '<span class="announcement-copy" aria-live="polite" aria-atomic="true">' +
+        '<span class="announcement-market"></span>' +
+        '<span class="announcement-text"></span>' +
+      '</span>' +
       '<button class="announcement-toggle" type="button" aria-label="Pause rotating updates">Pause</button>' +
       '</div>';
     firstHeader.parentNode.insertBefore(notice, firstHeader);
 
+    var noticeCopy = notice.querySelector('.announcement-copy');
+    var noticeMarket = notice.querySelector('.announcement-market');
     var noticeText = notice.querySelector('.announcement-text');
     var noticeToggle = notice.querySelector('.announcement-toggle');
     var noticeIndex = 0;
@@ -32,24 +62,33 @@
 
     function showNotice(index, immediate) {
       noticeIndex = (index + noticeMessages.length) % noticeMessages.length;
+      var message = noticeMessages[noticeIndex];
+      var updateMessage = function () {
+        noticeMarket.textContent = message.market;
+        noticeMarket.className = 'announcement-market market-' + message.market.toLowerCase();
+        noticeText.textContent = message.text;
+      };
       if (immediate || reduced) {
-        noticeText.textContent = noticeMessages[noticeIndex];
-        noticeText.classList.add('is-visible');
+        updateMessage();
+        noticeCopy.classList.add('is-visible');
         return;
       }
-      noticeText.classList.remove('is-visible');
+      noticeCopy.classList.remove('is-visible');
       window.setTimeout(function () {
-        noticeText.textContent = noticeMessages[noticeIndex];
-        noticeText.classList.add('is-visible');
+        updateMessage();
+        noticeCopy.classList.add('is-visible');
       }, 220);
     }
 
     function startNotices() {
       window.clearInterval(noticeTimer);
+      notice.classList.remove('is-running');
+      void notice.offsetWidth;
       if (noticePaused || reduced) return;
+      notice.classList.add('is-running');
       noticeTimer = window.setInterval(function () {
         showNotice(noticeIndex + 1, false);
-      }, 5200);
+      }, 6000);
     }
 
     showNotice(0, true);
