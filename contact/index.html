@@ -210,7 +210,11 @@
             </div>
           </div>
           <div class="card card-lg">
-            <form id="contactForm" action="mailto:info@cleardesk.co.nz" method="GET">
+            <form id="contactForm" action="https://formsubmit.co/info@cleardesk.co.nz" method="POST">
+              <input type="hidden" name="_subject" value="New ClearDesk website enquiry">
+              <input type="hidden" name="_next" value="https://cleardesk.co.nz/thank-you/">
+              <input type="hidden" name="_template" value="table">
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
               <div class="field">
                 <label for="cname">Your name</label>
                 <input type="text" id="cname" name="name" required autocomplete="name">
@@ -259,8 +263,8 @@
                   <a href="../legal/privacy/index.html">privacy policy</a>.</label>
               </div>
               <button type="submit" class="btn btn-primary btn-block">Send enquiry</button>
-              <p class="field-hint" style="margin-top:14px">Submitting opens your email app with these details prepared for
-                info@cleardesk.co.nz. You decide whether to send it.</p>
+              <p class="field-hint" style="margin-top:14px">Your enquiry will be sent to
+                info@cleardesk.co.nz. We normally respond within one working day.</p>
             </form>
           </div>
         </div>
@@ -342,6 +346,6 @@
       </div>
     </div>
   </footer>
-  <script src="../assets/js/main.js?v=7"></script>
+  <script src="../assets/js/main.js?v=10"></script>
 </body>
 </html>

@@ -181,17 +181,22 @@
         <div class="grid g2 values-grid"><div class="card"><h4>Accuracy</h4><p class="small muted mb0">Reconcile, document and check before calling work complete.</p></div><div class="card"><h4>Ownership</h4><p class="small muted mb0">Raise questions early and keep the next action visible.</p></div><div class="card"><h4>Respect</h4><p class="small muted mb0">Handle client information carefully and communicate without jargon.</p></div><div class="card"><h4>Improvement</h4><p class="small muted mb0">Use technology thoughtfully, with human review and practical judgement.</p></div></div>
         <div class="alert-note" style="margin-top:24px"><p class="mb0">ClearDesk considers capability, experience and role fit. Any engagement or employment offer will confirm location, status, hours, remuneration, work rights and other terms in writing.</p></div>
       </div><div class="card card-lg career-form-card">
-        <h3>Register your interest</h3><p class="small muted">This form prepares an email to ClearDesk. It does not upload or store your CV on the website.</p>
-        <form id="careerForm">
+        <h3>Register your interest</h3><p class="small muted">Complete this form and your application will be emailed directly to ClearDesk. You may also attach your CV.</p>
+        <form id="careerForm" action="https://formsubmit.co/info@cleardesk.co.nz" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="_subject" value="New ClearDesk careers application">
+          <input type="hidden" name="_next" value="https://cleardesk.co.nz/thank-you/">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
           <div class="field"><label for="careerName">Full name</label><input id="careerName" name="name" autocomplete="name" required></div>
           <div class="field"><label for="careerEmail">Email</label><input id="careerEmail" name="email" type="email" autocomplete="email" required></div>
           <div class="field"><label for="careerPhone">Phone <span class="muted">(optional)</span></label><input id="careerPhone" name="phone" type="tel" autocomplete="tel"></div>
           <div class="field"><label for="careerLocation">Current location</label><input id="careerLocation" name="location" required></div>
           <div class="field"><label for="careerRole">Area of interest</label><select id="careerRole" name="role" required><option value="">Select one</option><option>Bookkeeping &amp; Payroll Specialist</option><option>Finance &amp; E-Invoicing Analyst</option><option>Client Onboarding Coordinator</option><option>Future opportunities</option></select></div>
           <div class="field"><label for="careerRights">Availability / work-rights note</label><input id="careerRights" name="availability" placeholder="For example: available from November; NZ work rights"></div>
-          <div class="field"><label for="careerSummary">Short experience summary</label><textarea id="careerSummary" name="summary" required></textarea><p class="field-hint">After your email opens, attach your CV before sending.</p></div>
+          <div class="field"><label for="careerSummary">Short experience summary</label><textarea id="careerSummary" name="summary" required></textarea></div>
+          <div class="field"><label for="careerCV">Attach your CV <span class="muted">(optional, maximum 10 MB)</span></label><input id="careerCV" name="attachment" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"><p class="field-hint">PDF or Word document only.</p></div>
           <div class="field field-check"><input id="careerConsent" name="consent" type="checkbox" required><label for="careerConsent">I agree that ClearDesk may use these details to assess and contact me about work opportunities, as described in the <a href="../legal/privacy/index.html">Privacy Policy</a>.</label></div>
-          <button class="btn btn-primary btn-block" type="submit">Prepare my application email</button>
+          <button class="btn btn-primary btn-block" type="submit">Send my application</button>
         </form>
       </div></div></div>
     </section>
@@ -272,6 +277,6 @@
       </div>
     </div>
   </footer>
-  <script src="../assets/js/main.js?v=7"></script>
+  <script src="../assets/js/main.js?v=10"></script>
 </body>
 </html>

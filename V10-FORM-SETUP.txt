@@ -1,0 +1,25 @@
+CLEARDESK V10 — FORM EMAIL DELIVERY
+
+The Contact and Careers forms now submit directly to info@cleardesk.co.nz.
+The Careers form also accepts an optional PDF or Word CV up to 10 MB.
+Both forms redirect successful visitors to /thank-you/.
+
+ONE-TIME ACTIVATION AFTER GITHUB UPLOAD
+1. Open the live Contact page.
+2. Complete and submit one test enquiry using your own details.
+3. Open the inbox for info@cleardesk.co.nz (also check Spam/Junk).
+4. Open the activation email from FormSubmit.
+5. Click Activate Form.
+6. Return to the website and submit a second test enquiry.
+7. Confirm the second test arrives with all form details.
+8. Test the Careers form in the same way. If another activation email arrives,
+   click its activation link too.
+
+Keep the activation email. Mark future FormSubmit messages as Not Spam if needed.
+The website uses the free FormSubmit service because GitHub Pages cannot send
+emails by itself. CAPTCHA and a hidden spam trap are enabled.
+
+UPLOAD
+Extract the ZIP. Upload its CONTENTS to the root of the GitHub repository.
+Allow replacement of existing files. Do not delete the existing CNAME file.
+Confirm index.html is visible on the repository front page.
