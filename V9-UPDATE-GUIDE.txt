@@ -1,0 +1,23 @@
+ClearDesk v9 — Country-selection homepage
+
+New: two country cards, back-office management on both, and the headline
+'Your business support. All under one roof.' Responsive layout, entrance
+animation, keyboard focus and reduced-motion support. No location tracking.
+
+Only index.html has changed from v8. Other website pages are retained.
+EASIEST UPDATE: extract this ZIP and upload ONLY its top-level index.html
+into the root of your existing GitHub repository. Commit changes.
+Keep the existing CNAME file and all folders. No DNS or email changes needed.
+
+For a complete upload, use the contents of this folder, not the outer folder
+or ZIP itself. index.html must appear at the repository root.
+
+If country-based Cloudflare redirects were previously enabled, disable the
+NZ homepage and UAE homepage redirect rules to show this selection page.
+
+Maintenance: edit index.html to change the welcome text, service labels,
+country links or its embedded homepage CSS. The NZ and UAE pages remain
+nz/index.html and uae/index.html. A direct regional link bypasses selection.
+
+Validation: checked homepage local links and image references against the
+package; checked the ZIP entrypoint and unchanged regional page files.
