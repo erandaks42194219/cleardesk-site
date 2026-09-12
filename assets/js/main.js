@@ -36,6 +36,12 @@
       text: 'Electronic payday employment information is due within two working days of each payday.'
     }
   ];
+  var pageMarket = document.body && document.body.getAttribute('data-market');
+  if (pageMarket === 'nz' || pageMarket === 'uae') {
+    noticeMessages = noticeMessages.filter(function (message) {
+      return message.market.toLowerCase() === pageMarket;
+    });
+  }
   var firstHeader = document.querySelector('.site-header');
   if (firstHeader && !document.querySelector('.announcement-rotator')) {
     var notice = document.createElement('div');

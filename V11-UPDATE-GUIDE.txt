@@ -1,0 +1,33 @@
+CLEARDESK V11 — NZ-FIRST WEBSITE UPDATE
+
+WHAT CHANGED
+- Removed the two-country selection landing page.
+- The main website address now opens the NZ-focused homepage.
+- Rebuilt the homepage around bookkeeping, payroll, GST preparation,
+  AP/AR, reporting, finance automation and back-office management.
+- Kept NZ eInvoicing as a secondary specialist service.
+- Added visual service cards, an animated finance-desk panel, an SME audience
+  strip, a four-stage workflow and a stronger enquiry section.
+- Removed BOTIM from the homepage and all pages inside the NZ folder.
+- NZ pages now show only WhatsApp, phone and email actions.
+- The Contact page now presents WhatsApp first for NZ clients while retaining
+  BOTIM inside the separate UAE contact card.
+- NZ deadline notices are shown on NZ pages; UAE notices remain on UAE pages.
+- Existing Contact and Careers email forms remain enabled.
+
+HOW TO UPLOAD
+1. Extract the ZIP.
+2. Open the extracted cleardesk-site-v11 folder.
+3. Select everything inside the folder.
+4. In GitHub, open the cleardesk-site repository.
+5. Choose Add file > Upload files.
+6. Drag the selected contents into GitHub.
+7. Allow matching files to be replaced.
+8. Commit with the message: NZ-first homepage and service update
+9. Keep the existing CNAME file in GitHub.
+
+IMPORTANT
+- Upload the contents, not the ZIP or outer folder.
+- index.html must be visible on the repository front page.
+- The UAE section remains available at https://cleardesk.co.nz/uae/
+- No DNS or email changes are needed for this update.
