@@ -185,8 +185,8 @@
 
   /* ---------- Mobile drawer ---------- */
   var drawer = document.getElementById('mobileNav');
-  var burger = document.getElementById('burger');
-  var drawerClose = document.getElementById('mobileNavClose');
+  var burger = document.getElementById('burger') || document.querySelector('.burger');
+  var drawerClose = document.getElementById('mobileNavClose') || document.querySelector('.nav-close');
   var lastFocus = null;
 
   function openDrawer() {

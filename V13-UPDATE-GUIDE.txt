@@ -1,0 +1,20 @@
+CLEARDESK V13 - HEADER AND MOBILE MENU FIX
+
+Changes:
+1. NZ and UAE buttons are visible in the default NZ homepage header.
+2. NZ links to /nz/ and UAE links to /uae/.
+3. The mobile menu button now has a visible three-line icon.
+4. The mobile menu JavaScript now recognises the button and close control reliably.
+5. CSS and JavaScript cache versions were updated to v13.
+
+GITHUB UPLOAD:
+1. Extract the ZIP file.
+2. Open the extracted folder.
+3. Select everything INSIDE the folder.
+4. Upload those items to the root of the cleardesk-site GitHub repository.
+5. Commit directly to the main branch.
+6. Keep the existing CNAME file in GitHub.
+
+After GitHub Pages finishes publishing, open https://cleardesk.co.nz and perform
+a hard refresh. On iPhone Safari, close the tab and reopen it. If necessary,
+clear Safari website data for cleardesk.co.nz to remove an older cached header.
