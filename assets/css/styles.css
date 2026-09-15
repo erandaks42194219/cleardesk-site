@@ -1503,3 +1503,62 @@ body.nav-open { overflow: hidden; }
   .why-banner-wrap { margin: 0; }
   .why-banner { box-shadow: none; }
 }
+
+/* Accounting-firm partnership */
+.firm-partner-section { background: #eef5fc; overflow: hidden; }
+.firm-partner-grid { display: grid; gap: var(--s7); align-items: center; }
+.firm-partner-copy { max-width: 650px; }
+.firm-promise { display: flex; flex-wrap: wrap; gap: 9px; margin: var(--s5) 0; }
+.firm-promise span {
+  display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px;
+  border-radius: 999px; background: #fff; border: 1px solid #c9dcef;
+  color: var(--navy); font: 650 var(--fs-xs)/1.3 var(--font-head);
+}
+.firm-promise span::before { content: "✓"; color: var(--success); font-weight: 800; }
+.firm-boundary-card {
+  position: relative; padding: clamp(24px,4vw,38px); border-radius: 20px;
+  background: var(--navy); color: #fff; box-shadow: 0 24px 60px rgba(10,22,40,.2);
+}
+.firm-boundary-card::before {
+  content: ""; position: absolute; width: 150px; height: 150px; right: -55px; top: -55px;
+  border: 24px solid rgba(74,144,217,.18); border-radius: 50%;
+}
+.firm-boundary-head { position: relative; display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 22px; }
+.firm-boundary-head span { font: 750 1.25rem/1 var(--font-head); }
+.firm-boundary-head i { color: #a9c8e8; font: 600 var(--fs-xs)/1.3 var(--font-head); font-style: normal; text-transform: uppercase; letter-spacing: .06em; }
+.firm-flow { position: relative; display: grid; gap: 10px; }
+.firm-flow div { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: center; padding: 12px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: 10px; }
+.firm-flow b { display: grid; place-items: center; width: 30px; height: 30px; background: var(--blue); border-radius: 50%; }
+.firm-boundary-card p { position: relative; margin: 20px 0 0; color: #c8d7e8; font-size: var(--fs-sm); }
+.firm-boundary-card p strong { color: #fff; }
+
+.practice-hero { padding: clamp(72px,10vw,120px) 0; background: linear-gradient(135deg,#f7f9fc 0%,#e8f2fc 100%); }
+.practice-hero-grid { display: grid; gap: var(--s7); align-items: center; }
+.practice-hero h1 { max-width: 13ch; }
+.practice-assurance { background: #fff; border: 1px solid var(--border); border-radius: 18px; padding: clamp(24px,4vw,38px); box-shadow: var(--shadow-lg); }
+.practice-assurance h2 { font-size: var(--fs-xl); }
+.practice-assurance ul { margin: var(--s5) 0 0; padding: 0; list-style: none; }
+.practice-assurance li { position: relative; padding: 12px 0 12px 30px; border-top: 1px solid var(--border); }
+.practice-assurance li::before { content: "✓"; position: absolute; left: 2px; color: var(--success); font-weight: 800; }
+.practice-services { display: grid; gap: 14px; }
+.practice-service { padding: 22px; background: #fff; border: 1px solid var(--border); border-radius: 12px; }
+.practice-service span { color: var(--blue); font: 750 var(--fs-xs)/1 var(--font-head); letter-spacing: .08em; }
+.practice-service h3 { margin: 10px 0 7px; font-size: var(--fs-lg); }
+.practice-service p { margin: 0; color: var(--muted); }
+.partnership-models { display: grid; gap: 16px; }
+.partnership-models article { border-top: 4px solid var(--blue); }
+.boundary-list { display: grid; gap: 12px; padding: 0; list-style: none; }
+.boundary-list li { padding: 16px 18px; border-left: 3px solid var(--success); background: var(--offwhite); }
+
+@media (min-width: 860px) {
+  .firm-partner-grid { grid-template-columns: 1.08fr .92fr; }
+  .practice-hero-grid { grid-template-columns: 1.12fr .88fr; }
+  .practice-services { grid-template-columns: repeat(3,1fr); }
+  .partnership-models { grid-template-columns: repeat(3,1fr); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .firm-boundary-card { animation: firmFloat 5s ease-in-out infinite; }
+  .firm-flow div { transition: transform .2s ease, background .2s ease; }
+  .firm-flow div:hover { transform: translateX(4px); background: rgba(255,255,255,.11); }
+}
+@keyframes firmFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }

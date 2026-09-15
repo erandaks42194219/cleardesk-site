@@ -42,6 +42,20 @@
       return message.market.toLowerCase() === pageMarket;
     });
   }
+
+  /* Keep specialist practice support discoverable in the compact NZ mobile menu. */
+  if (pageMarket === 'nz') {
+    var mobileServices = document.querySelector('.mobile-nav-body h4 + ul');
+    if (mobileServices && !mobileServices.querySelector('a[href="/nz/accounting-firms/"]')) {
+      var firmItem = document.createElement('li');
+      firmItem.innerHTML = '<a href="/nz/accounting-firms/">Support for accounting firms</a>';
+      if (mobileServices.children.length > 0) {
+        mobileServices.insertBefore(firmItem, mobileServices.children[1] || null);
+      } else {
+        mobileServices.appendChild(firmItem);
+      }
+    }
+  }
   var firstHeader = document.querySelector('.site-header');
   if (firstHeader && !document.querySelector('.announcement-rotator')) {
     var notice = document.createElement('div');
