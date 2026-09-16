@@ -1563,18 +1563,19 @@ body.nav-open { overflow: hidden; }
 }
 @keyframes firmFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 
-/* Personal certification: logo remains unaltered, distinct from credential text. */
-.xero-credential { display: flex; align-items: center; gap: 20px; margin-top: 26px; padding: 16px 20px; background: #fff; border: 1px solid var(--border); border-left: 4px solid var(--blue); border-radius: 16px; box-shadow: 0 8px 28px rgba(10,22,40,.07); color: var(--navy); }
-.xero-credential-brand { flex: 0 0 112px; text-align: center; }
-.xero-credential-brand img { display: block; width: 112px; height: 112px; object-fit: contain; }
-.xero-credential-brand span { display: block; font-size: 11px; line-height: 1.4; font-weight: 700; color: var(--blue); }
-.xero-credential-copy { min-width: 0; }
-.xero-credential-copy strong { display: block; font-size: clamp(17px,1.6vw,22px); line-height: 1.3; letter-spacing: -.02em; }
-.xero-credential-copy p { margin: 8px 0 5px; font-size: 14px; line-height: 1.5; color: var(--text); }
-.xero-credential-copy p span { display: block; }
-.xero-credential-copy small { display: block; font-size: 12px; line-height: 1.6; color: var(--muted); }
-@media (max-width: 420px) {
-  .xero-credential { gap: 12px; padding: 12px; }
-  .xero-credential-brand { flex-basis: 88px; }
-  .xero-credential-brand img { width: 88px; height: 88px; }
+/* Official badge shown unchanged; surrounding text uses ClearDesk typography. */
+.xero-credential { display: flex; align-items: center; gap: 24px; margin-top: 26px; padding: 24px; background: linear-gradient(120deg,#fff 35%,#F7F9FC); border: 1px solid #d6e5f5; border-top: 3px solid var(--sky); border-radius: 18px; box-shadow: 0 12px 32px rgba(10,22,40,.15); color: var(--navy); }
+.xero-credential-brand { flex: 0 0 128px; }
+.xero-badge-window { position: relative; width: 128px; height: 128px; overflow: hidden; background: #fff; border-radius: 6px; }
+/* Window isolates the supplied official badge, excluding screenshot headings. */
+.xero-badge-window img { position: absolute; width: 261.538462%; max-width: none; height: auto; left: -77.884615%; top: -58.173077%; }
+.xero-credential-copy { min-width: 0; font-family: var(--font-head); }
+.xero-credential-eyebrow { display: block; margin-bottom: 8px; font-size: 10px; font-weight: 700; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); }
+.xero-credential-copy strong { display: block; font-family: var(--font-head); font-size: clamp(19px,1.7vw,24px); font-weight: 700; line-height: 1.3; letter-spacing: -.02em; color: var(--navy); }
+.xero-credential-copy p { margin: 12px 0 0; font-family: var(--font-head); font-size: 14px; font-weight: 600; line-height: 1.5; color: var(--navy); }
+.xero-credential-copy p span { display: block; margin-top: 3px; font-family: var(--font-body); font-size: 11px; font-weight: 400; color: var(--muted); }
+@media (max-width: 600px) {
+  .xero-credential { flex-direction: column; gap: 16px; padding: 22px 18px; text-align: center; }
+  .xero-credential-brand { flex-basis: auto; }
+  .xero-credential-copy strong { font-size: 22px; }
 }
