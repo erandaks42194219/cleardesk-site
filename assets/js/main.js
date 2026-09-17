@@ -7,36 +7,56 @@
 
   /* ---------- Rotating announcement bar ---------- */
   var noticeMessages = [
-    {
-      market: 'UAE',
-      text: 'E-invoicing for revenue below AED 50m: appoint an accredited provider by 31 March 2027 and implement by 1 July 2027.'
-    },
-    {
-      market: 'UAE',
-      text: 'Corporate Tax returns and any payment are generally due within nine months after the end of the tax period.'
-    },
-    {
-      market: 'UAE',
-      text: 'VAT returns and related payments are generally due within 28 days after the end of the tax period.'
-    },
-    {
-      market: 'UAE',
-      text: 'Small Business Relief covers eligible tax periods ending on or before 31 December 2026; eligibility conditions apply.'
-    },
-    {
-      market: 'NZ',
-      text: 'GST returns and payment are generally due on the 28th after the taxable period; 15 January and 7 May exceptions apply.'
-    },
-    {
-      market: 'NZ',
-      text: 'IR3 income tax returns are generally due 7 July unless a tax-agent or other extension of time applies.'
-    },
-    {
-      market: 'NZ',
-      text: 'Electronic payday employment information is due within two working days of each payday.'
-    }
-  ];
+  {
+    "market": "NZ",
+    "text": "21 September 2026: August employer deductions are due for small to medium employers. Payday filing is separate.",
+    "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
+  },
+  {
+    "market": "NZ",
+    "text": "28 September 2026: GST return and payment due if your taxable period ended 31 August 2026, including nil returns.",
+    "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds"
+  },
+  {
+    "market": "NZ",
+    "text": "Payroll reminder: file electronic employment information within two working days of each payday; special filing cases differ.",
+    "url": "https://www.ird.govt.nz/employing-staff/payday-filing"
+  },
+  {
+    "market": "NZ",
+    "text": "19 August 2026: Business.govt.nz highlighted Funding Explorer to find government business support. Programme eligibility varies.",
+    "url": "https://www.business.govt.nz/news/looking-for-funding-try-funding-explorer"
+  },
+  {
+    "market": "UAE",
+    "text": "30 September 2026: Corporate Tax filing and payment generally due for taxable persons whose tax period ended 31 December 2025.",
+    "url": "https://tax.gov.ae/en/media.centre/news/federal.tax.authority.urges.submission.of.corporate.tax.returns.and.settlement.of.corporate.tax.liabilities.within.nine.months.from.the.end.of.the.tax.period.aspx"
+  },
+  {
+    "market": "UAE",
+    "text": "28 September 2026: VAT return and payment due if your assigned tax period ended 31 August 2026. Check EmaraTax.",
+    "url": "https://tax.gov.ae/en/taxes/Vat/vat.topics/filing.vat.returns.and.making.payments.aspx"
+  },
+  {
+    "market": "UAE",
+    "text": "In-scope businesses below AED 50m revenue: appoint an e-invoicing ASP by 31 March 2027; implement from 1 July 2027. Exclusions apply.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-the-issuance-of-two-ministerial-decisions-on-the-scope-of-obligations-and-the-timelines-for-implementing-the-electronic-invoicing-system-2/"
+  },
+  {
+    "market": "UAE",
+    "text": "Small Business Relief: eligible tax periods must end by 31 December 2026. Revenue and other conditions apply; relief requires an election.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-decision-on-small-business-relief-for-corporate-tax-purposes/"
+  },
+  {
+    "market": "UAE",
+    "text": "In-scope businesses above AED 50m revenue: ASP appointment extended to 30 October 2026; e-invoicing implementation remains 1 January 2027.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-targeted-amendments-to-einvoicing-system-decisions/"
+  }
+];
   var pageMarket = document.body && document.body.getAttribute('data-market');
+  var noticePath = window.location.pathname;
+  if (/(^|\/)uae(\/|$)/.test(noticePath)) pageMarket = 'uae';
+  else if (/(^|\/)nz(\/|$)/.test(noticePath) || noticePath === '/' || noticePath === '/index.html') pageMarket = 'nz';
   if (pageMarket === 'nz' || pageMarket === 'uae') {
     noticeMessages = noticeMessages.filter(function (message) {
       return message.market.toLowerCase() === pageMarket;
@@ -63,19 +83,21 @@
     notice.setAttribute('role', 'region');
     notice.setAttribute('aria-label', 'ClearDesk updates');
     notice.innerHTML = '<div class="container announcement-inner">' +
-      '<span class="announcement-kicker">Deadline watch</span>' +
-      '<span class="announcement-copy" aria-live="polite" aria-atomic="true">' +
+      '<span class="announcement-kicker">Business Updates</span>' +
+      '<span class="announcement-copy">' +
         '<span class="announcement-market"></span>' +
-        '<span class="announcement-text"></span>' +
+        '<a class="announcement-text"></a>' +
       '</span>' +
+      '<button class="announcement-next announcement-toggle" type="button" aria-label="Next business update">Next</button>' +
       '<button class="announcement-toggle" type="button" aria-label="Pause rotating updates">Pause</button>' +
+      '<small class="announcement-disclaimer">General information; check your circumstances and official guidance.</small>' +
       '</div>';
     firstHeader.parentNode.insertBefore(notice, firstHeader);
 
     var noticeCopy = notice.querySelector('.announcement-copy');
     var noticeMarket = notice.querySelector('.announcement-market');
     var noticeText = notice.querySelector('.announcement-text');
-    var noticeToggle = notice.querySelector('.announcement-toggle');
+    var noticeToggle = notice.querySelector('.announcement-toggle:not(.announcement-next)');
     var noticeIndex = 0;
     var noticeTimer;
     var noticePaused = reduced;
@@ -87,6 +109,8 @@
         noticeMarket.textContent = message.market;
         noticeMarket.className = 'announcement-market market-' + message.market.toLowerCase();
         noticeText.textContent = message.text;
+        noticeText.href = message.url;
+        noticeText.setAttribute('aria-label', message.market + ': ' + message.text + ' Read official guidance.');
       };
       if (immediate || reduced) {
         updateMessage();
@@ -104,27 +128,34 @@
       window.clearInterval(noticeTimer);
       notice.classList.remove('is-running');
       void notice.offsetWidth;
-      if (noticePaused || reduced) return;
+      if (noticePaused || notice.contains(document.activeElement) || notice.matches(':hover')) return;
       notice.classList.add('is-running');
       noticeTimer = window.setInterval(function () {
         showNotice(noticeIndex + 1, false);
-      }, 6000);
+      }, 8000);
     }
 
     showNotice(0, true);
     startNotices();
-    if (reduced) {
-      noticeToggle.hidden = true;
-      notice.classList.add('is-paused');
-    } else {
-      noticeToggle.addEventListener('click', function () {
-        noticePaused = !noticePaused;
-        notice.classList.toggle('is-paused', noticePaused);
-        noticeToggle.textContent = noticePaused ? 'Play' : 'Pause';
-        noticeToggle.setAttribute('aria-label', noticePaused ? 'Play rotating updates' : 'Pause rotating updates');
-        startNotices();
-      });
+    function syncNoticeControl() {
+      notice.classList.toggle('is-paused', noticePaused);
+      noticeToggle.textContent = noticePaused ? 'Resume' : 'Pause';
+      noticeToggle.setAttribute('aria-label', noticePaused ? 'Resume rotating updates' : 'Pause rotating updates');
     }
+    syncNoticeControl();
+    noticeToggle.addEventListener('click', function () {
+      noticePaused = !noticePaused;
+      syncNoticeControl();
+      startNotices();
+    });
+    notice.querySelector('.announcement-next').addEventListener('click', function () {
+      showNotice(noticeIndex + 1, true);
+      startNotices();
+    });
+    notice.addEventListener('focusin', startNotices);
+    notice.addEventListener('focusout', function () { window.setTimeout(startNotices, 0); });
+    notice.addEventListener('mouseenter', startNotices);
+    notice.addEventListener('mouseleave', startNotices);
   }
 
   /* ---------- Sticky header shadow ---------- */
