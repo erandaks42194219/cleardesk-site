@@ -24,8 +24,8 @@
   },
   {
     "market": "NZ",
-    "text": "19 August 2026: Business.govt.nz highlighted Funding Explorer to find government business support. Programme eligibility varies.",
-    "url": "https://www.business.govt.nz/news/looking-for-funding-try-funding-explorer"
+    "text": "17 September 2026: NZ GDP rose 0.2% in the June quarter; construction activity rose 2.7%. Use current trading data when reviewing forecasts.",
+    "url": "https://www.stats.govt.nz/news/gdp-increases-0-2-percent-in-the-june-2026-quarter/"
   },
   {
     "market": "UAE",
