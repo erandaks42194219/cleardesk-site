@@ -1582,7 +1582,7 @@ body.nav-open { overflow: hidden; }
 
 /* Business Updates: source links, controls and wrapping (17 September 2026). */
 .announcement-inner { grid-template-columns: auto minmax(0, 1fr) auto auto; padding-top: 8px; padding-bottom: 8px; }
-.announcement-text, .announcement-text:visited, .announcement-text:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.announcement-text, .announcement-text:visited, .announcement-text:hover { color: #fff; text-decoration: none; overflow-wrap: anywhere; }
 .announcement-text:focus-visible, .announcement-toggle:focus-visible { outline: 2px solid #FFD98A; outline-offset: 3px; }
 .announcement-disclaimer { grid-column: 1 / -1; text-align: center; font-size: .68rem; color: #fff; line-height: 1.4; }
 .announcement-kicker::before { animation: none; }
