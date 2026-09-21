@@ -63,17 +63,33 @@
     });
   }
 
-  /* Keep specialist practice support discoverable in the compact NZ mobile menu. */
+  /* Keep the complete NZ service range discoverable across older and newer page headers. */
   if (pageMarket === 'nz') {
     var mobileServices = document.querySelector('.mobile-nav-body h4 + ul');
-    if (mobileServices && !mobileServices.querySelector('a[href="/nz/accounting-firms/"]')) {
-      var firmItem = document.createElement('li');
-      firmItem.innerHTML = '<a href="/nz/accounting-firms/">Support for accounting firms</a>';
-      if (mobileServices.children.length > 0) {
-        mobileServices.insertBefore(firmItem, mobileServices.children[1] || null);
-      } else {
-        mobileServices.appendChild(firmItem);
-      }
+    var nzServiceLinks = [
+      ['/nz/accounting-firms/', 'Support for accounting firms', 'Confidential capacity behind your practice'],
+      ['/nz/website-development/', 'Website development', 'Practical, mobile-friendly business websites'],
+      ['/nz/social-media-marketing/', 'Social media marketing', 'Useful content and a consistent presence'],
+      ['/nz/ai-integration/', 'AI integration advice', 'Safer, practical help for everyday admin']
+    ];
+    if (mobileServices) {
+      nzServiceLinks.forEach(function (service) {
+        if (!mobileServices.querySelector('a[href="' + service[0] + '"]')) {
+          var item = document.createElement('li');
+          item.innerHTML = '<a href="' + service[0] + '">' + service[1] + '</a>';
+          mobileServices.appendChild(item);
+        }
+      });
+    }
+    var desktopServices = document.querySelector('.site-header .dropdown');
+    if (desktopServices) {
+      nzServiceLinks.forEach(function (service) {
+        if (!desktopServices.querySelector('a[href="' + service[0] + '"]')) {
+          var desktopItem = document.createElement('li');
+          desktopItem.innerHTML = '<a href="' + service[0] + '"><b>' + service[1] + '</b><span>' + service[2] + '</span></a>';
+          desktopServices.appendChild(desktopItem);
+        }
+      });
     }
   }
   var firstHeader = document.querySelector('.site-header');
