@@ -1,8 +1,8 @@
 # Business Updates source notes
 
-Verified 17 September 2026. These are general-information reminders, not personalised advice.
+Verified 23 September 2026. These are general-information reminders, not personalised advice.
 
-- **NZ** 21 September 2026: August employer deductions are due for small to medium employers. Payday filing is separate.
+- **NZ** 5 October 2026: employer deductions for 16–30 September are due for large employers. Payday filing is separate.
   https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue
 
 - **NZ** 28 September 2026: GST return and payment due if your taxable period ended 31 August 2026, including nil returns.
@@ -11,8 +11,8 @@ Verified 17 September 2026. These are general-information reminders, not persona
 - **NZ** Payroll reminder: file electronic employment information within two working days of each payday; special filing cases differ.
   https://www.ird.govt.nz/employing-staff/payday-filing
 
-- **NZ** 19 August 2026: Business.govt.nz highlighted Funding Explorer to find government business support. Programme eligibility varies.
-  https://www.business.govt.nz/news/looking-for-funding-try-funding-explorer
+- **NZ** 17 September 2026: NZ GDP rose 0.2% in the June quarter; construction activity rose 2.7%. Businesses should use current trading data when reviewing forecasts.
+  https://www.stats.govt.nz/news/gdp-increases-0-2-percent-in-the-june-2026-quarter/
 
 - **UAE** 30 September 2026: Corporate Tax filing and payment generally due for taxable persons whose tax period ended 31 December 2025.
   https://tax.gov.ae/en/media.centre/news/federal.tax.authority.urges.submission.of.corporate.tax.returns.and.settlement.of.corporate.tax.liabilities.within.nine.months.from.the.end.of.the.tax.period.aspx
