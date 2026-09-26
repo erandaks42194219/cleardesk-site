@@ -473,14 +473,17 @@
 
   /* ---------- BOTIM app launcher ---------- */
   document.addEventListener('DOMContentLoaded', function () {
-    var launcher = document.createElement('a');
-    launcher.className = 'quick-botim';
-    launcher.href = 'https://botim.me/download/';
-    launcher.setAttribute('data-botim', '');
-    launcher.setAttribute('data-botim-number', '+642040101914');
-    launcher.setAttribute('aria-label', 'Open BOTIM to contact ClearDesk on +64 20 4010 1914');
-    launcher.innerHTML = '<span>Open BOTIM</span>';
-    document.body.appendChild(launcher);
+    if (document.body.getAttribute('data-market') === 'uae') {
+      var launcher = document.createElement('a');
+      launcher.className = 'quick-botim';
+      launcher.href = 'https://botim.me/download/';
+      launcher.setAttribute('data-botim', '');
+      launcher.setAttribute('data-botim-number', '+642040101914');
+      launcher.setAttribute('aria-label', 'Open BOTIM to contact ClearDesk on +64 20 4010 1914');
+      launcher.innerHTML = '<span>Open BOTIM</span>';
+      document.body.appendChild(launcher);
+
+    }
 
     var whatsapp = document.createElement('a');
     whatsapp.className = 'quick-whatsapp';
