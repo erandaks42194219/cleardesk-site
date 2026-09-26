@@ -1,6 +1,6 @@
 # Business Updates source notes
 
-Verified 23 September 2026. These are general-information reminders, not personalised advice.
+Verified 26 September 2026. These are general-information reminders, not personalised advice.
 
 - **NZ** 5 October 2026: employer deductions for 16–30 September are due for large employers. Payday filing is separate.
   https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue
@@ -23,8 +23,8 @@ Verified 23 September 2026. These are general-information reminders, not persona
 - **UAE** In-scope businesses below AED 50m revenue: appoint an e-invoicing ASP by 31 March 2027; implement from 1 July 2027. Exclusions apply.
   https://mof.gov.ae/en/news/ministry-of-finance-announces-the-issuance-of-two-ministerial-decisions-on-the-scope-of-obligations-and-the-timelines-for-implementing-the-electronic-invoicing-system-2/
 
-- **UAE** Small Business Relief: eligible tax periods must end by 31 December 2026. Revenue and other conditions apply; relief requires an election.
-  https://mof.gov.ae/en/news/ministry-of-finance-issues-decision-on-small-business-relief-for-corporate-tax-purposes/
+- **UAE** Small Business Relief: eligible taxable persons with revenue up to AED 3 million may elect relief for qualifying tax periods ending on or before 31 December 2029. Conditions and legislative requirements apply.
+  https://mof.gov.ae/en/news/ministry-of-finance-announces-extension-of-small-business-relief-for-corporate-tax-purposes-until-31-december-2029/
 
 - **UAE** In-scope businesses above AED 50m revenue: ASP appointment extended to 30 October 2026; e-invoicing implementation remains 1 January 2027.
   https://mof.gov.ae/en/news/ministry-of-finance-announces-targeted-amendments-to-einvoicing-system-decisions/
