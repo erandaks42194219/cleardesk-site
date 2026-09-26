@@ -522,4 +522,51 @@
       });
     });
   });
+
+
+  /* ---------- Homepage featured-services carousel ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-launch-carousel]'), function (carousel) {
+    var slides = carousel.querySelectorAll('[data-launch-slide]');
+    var dots = carousel.querySelectorAll('[data-launch-dot]');
+    var toggle = carousel.querySelector('[data-launch-toggle]');
+    var currentLabel = carousel.querySelector('[data-launch-current]');
+    var current = 0;
+    var timer;
+    var paused = reduced;
+    if (slides.length < 2) return;
+    function showLaunchSlide(index) {
+      current = (index + slides.length) % slides.length;
+      Array.prototype.forEach.call(slides, function (slide, i) {
+        var active = i === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+      Array.prototype.forEach.call(dots, function (dot, i) {
+        var active = i === current;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-current', active ? 'true' : 'false');
+      });
+      if (currentLabel) currentLabel.textContent = String(current + 1).padStart(2, '0');
+    }
+    function syncLaunchToggle() {
+      if (!toggle) return;
+      toggle.textContent = paused ? 'Play' : 'Pause';
+      toggle.setAttribute('aria-label', paused ? 'Play rotating featured services' : 'Pause rotating featured services');
+    }
+    function startLaunchCarousel() {
+      window.clearInterval(timer);
+      if (paused || reduced || carousel.matches(':hover') || carousel.contains(document.activeElement)) return;
+      timer = window.setInterval(function () { showLaunchSlide(current + 1); }, 2000);
+    }
+    Array.prototype.forEach.call(dots, function (dot, i) {
+      dot.addEventListener('click', function () { showLaunchSlide(i); startLaunchCarousel(); });
+    });
+    if (toggle) toggle.addEventListener('click', function () { paused = !paused; syncLaunchToggle(); startLaunchCarousel(); });
+    carousel.addEventListener('mouseenter', startLaunchCarousel);
+    carousel.addEventListener('mouseleave', startLaunchCarousel);
+    carousel.addEventListener('focusin', startLaunchCarousel);
+    carousel.addEventListener('focusout', function () { window.setTimeout(startLaunchCarousel, 0); });
+    showLaunchSlide(0); syncLaunchToggle(); startLaunchCarousel();
+  });
+
 })();
