@@ -24,6 +24,11 @@
   },
   {
     "market": "NZ",
+    "text": "From 1 October 2026: the FBT prescribed interest rate for employment-related loans increases from 5.77% to 6.07%.",
+    "url": "https://www.taxtechnical.ird.govt.nz/determinations/fringe-benefit-tax/prescribed-rate/2026/det-26-06"
+  },
+  {
+    "market": "NZ",
     "text": "17 September 2026: NZ GDP rose 0.2% in the June quarter; construction activity rose 2.7%. Use current trading data when reviewing forecasts.",
     "url": "https://www.stats.govt.nz/news/gdp-increases-0-2-percent-in-the-june-2026-quarter/"
   },
@@ -44,8 +49,8 @@
   },
   {
     "market": "UAE",
-    "text": "Small Business Relief: eligible tax periods must end by 31 December 2026. Revenue and other conditions apply; relief requires an election.",
-    "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-decision-on-small-business-relief-for-corporate-tax-purposes/"
+    "text": "Small Business Relief: eligible resident persons with revenue up to AED 3m may elect for qualifying tax periods ending by 31 December 2029. Exclusions and conditions apply.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-extension-of-small-business-relief-for-corporate-tax-purposes-until-31-december-2029/"
   },
   {
     "market": "UAE",
