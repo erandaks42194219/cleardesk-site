@@ -14,11 +14,6 @@
   },
   {
     "market": "NZ",
-    "text": "28 September 2026: GST return and payment due if your taxable period ended 31 August 2026, including nil returns.",
-    "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds"
-  },
-  {
-    "market": "NZ",
     "text": "Payroll reminder: file electronic employment information within two working days of each payday; special filing cases differ.",
     "url": "https://www.ird.govt.nz/employing-staff/payday-filing"
   },
@@ -36,11 +31,6 @@
     "market": "UAE",
     "text": "30 September 2026: Corporate Tax filing and payment generally due for taxable persons whose tax period ended 31 December 2025.",
     "url": "https://tax.gov.ae/en/media.centre/news/federal.tax.authority.urges.submission.of.corporate.tax.returns.and.settlement.of.corporate.tax.liabilities.within.nine.months.from.the.end.of.the.tax.period.aspx"
-  },
-  {
-    "market": "UAE",
-    "text": "28 September 2026: VAT return and payment due if your assigned tax period ended 31 August 2026. Check EmaraTax.",
-    "url": "https://tax.gov.ae/en/taxes/Vat/vat.topics/filing.vat.returns.and.making.payments.aspx"
   },
   {
     "market": "UAE",
