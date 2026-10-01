@@ -1667,3 +1667,26 @@ body.nav-open { overflow: hidden; }
   .announcement-copy { transition: none; transform: none; }
   .announcement-rotator::after { animation: none !important; }
 }
+
+/* Website offer terms: always readable, including direct links on phones. */
+.terms-jump{display:flex;flex-wrap:wrap;gap:10px 18px;margin:24px 0}
+.terms-jump a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid #E2E8F0;border-radius:8px;background:#fff;color:#1B5EAE;font-weight:600;font-size:14px}
+.website-offer-terms h2{font-size:clamp(27px,4vw,40px);line-height:1.2}
+.website-offer-terms h3{margin-top:32px;font-size:21px;line-height:1.4}
+.website-offer-terms [id]{scroll-margin-top:110px}
+.website-offer-terms h2:target{border-left:4px solid #E8A020;padding-left:16px}
+.offer-summary{padding:22px;border:1px solid #E2E8F0;border-left:4px solid #1B5EAE;border-radius:10px;background:#fff;margin:24px 0}
+.offer-summary p:last-child{margin-bottom:0}
+.offer-disclosure.launch-terms{font-size:13px;line-height:1.65;color:#D6E3F2}
+.offer-disclosure.launch-terms p{margin:0;max-width:850px}
+.offer-terms-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#fff;font-weight:700;border-bottom:1px solid #4A90D9}
+.offer-terms-link:hover,.offer-terms-link:visited{color:#fff}
+.offer-terms-link:focus-visible,.terms-jump a:focus-visible{outline:3px solid #E8A020;outline-offset:4px}
+.prose[data-full-text]{max-height:none!important;overflow:visible!important}
+.prose[data-full-text]::after{display:none!important}
+.prose[data-full-text] .mobile-read-toggle{display:none!important}
+.website-offer-callout{padding:24px;border:1px solid #E2E8F0;border-left:4px solid #1B5EAE;border-radius:12px;background:#F7F9FC}
+.website-offer-callout h2{font-size:clamp(24px,3vw,32px)}
+.website-offer-callout p{max-width:850px}
+@media(max-width:600px){.website-offer-terms h3{font-size:19px}.offer-summary{padding:18px}.terms-jump{gap:8px}.terms-jump a{font-size:13px}.website-offer-terms .btn-row>*{width:100%;text-align:center}.offer-disclosure.launch-terms{font-size:13px}}
+@media print{.website-offer-terms{background:#fff}.terms-jump,.website-offer-terms .btn-row{display:none}.prose[data-full-text]{max-height:none!important;overflow:visible!important}.website-offer-terms h3{break-after:avoid}}

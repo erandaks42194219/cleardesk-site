@@ -303,7 +303,7 @@
 
   /* ---------- Mobile quick-reading experience ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('.section .prose'), function (prose, index) {
-    if (prose.textContent.trim().length < 680 || prose.classList.contains('mobile-readable')) return;
+    if (prose.hasAttribute('data-full-text') || prose.textContent.trim().length < 680 || prose.classList.contains('mobile-readable')) return;
     prose.classList.add('mobile-readable', 'is-collapsed');
     if (!prose.id) prose.id = 'mobile-details-' + (index + 1);
     var toggle = document.createElement('button');
