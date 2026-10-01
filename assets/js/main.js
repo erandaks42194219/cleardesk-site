@@ -14,6 +14,11 @@
   },
   {
     "market": "NZ",
+    "text": "28 October 2026: GST return and payment are due for registered businesses with a taxable period ending 30 September.",
+    "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds"
+  },
+  {
+    "market": "NZ",
     "text": "Payroll reminder: file electronic employment information within two working days of each payday; special filing cases differ.",
     "url": "https://www.ird.govt.nz/employing-staff/payday-filing"
   },
@@ -26,11 +31,6 @@
     "market": "NZ",
     "text": "17 September 2026: NZ GDP rose 0.2% in the June quarter; construction activity rose 2.7%. Use current trading data when reviewing forecasts.",
     "url": "https://www.stats.govt.nz/news/gdp-increases-0-2-percent-in-the-june-2026-quarter/"
-  },
-  {
-    "market": "UAE",
-    "text": "30 September 2026: Corporate Tax filing and payment generally due for taxable persons whose tax period ended 31 December 2025.",
-    "url": "https://tax.gov.ae/en/media.centre/news/federal.tax.authority.urges.submission.of.corporate.tax.returns.and.settlement.of.corporate.tax.liabilities.within.nine.months.from.the.end.of.the.tax.period.aspx"
   },
   {
     "market": "UAE",
