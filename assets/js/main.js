@@ -44,6 +44,11 @@
   },
   {
     "market": "UAE",
+    "text": "28 October 2026: the FTA lists a VAT-return deadline for applicable registered persons. Check the tax period shown in EmaraTax.",
+    "url": "https://tax.gov.ae/en/announcements.aspx"
+  },
+  {
+    "market": "UAE",
     "text": "In-scope businesses above AED 50m revenue: ASP appointment extended to 30 October 2026; e-invoicing implementation remains 1 January 2027.",
     "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-targeted-amendments-to-einvoicing-system-decisions/"
   }
