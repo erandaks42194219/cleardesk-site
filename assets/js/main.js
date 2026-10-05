@@ -9,7 +9,7 @@
   var noticeMessages = [
   {
     "market": "NZ",
-    "text": "5 October 2026: employer deductions for 16–30 September are due for large employers. Payday filing is separate.",
+    "text": "20 October 2026: September deductions are due for small-to-medium employers, and 1–15 October deductions are due for large employers.",
     "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
   },
   {
