@@ -29,8 +29,8 @@
   },
   {
     "market": "NZ",
-    "text": "17 September 2026: NZ GDP rose 0.2% in the June quarter; construction activity rose 2.7%. Use current trading data when reviewing forecasts.",
-    "url": "https://www.stats.govt.nz/news/gdp-increases-0-2-percent-in-the-june-2026-quarter/"
+    "text": "20 October 2026: quarterly FBT return and payment are due for the period ending 30 September for employers with a March balance date.",
+    "url": "https://www.ird.govt.nz/employing-staff/payday-filing"
   },
   {
     "market": "UAE",
