@@ -19,8 +19,8 @@
   },
   {
     "market": "NZ",
-    "text": "Payroll reminder: file electronic employment information within two working days of each payday; special filing cases differ.",
-    "url": "https://www.ird.govt.nz/employing-staff/payday-filing"
+    "text": "28 October 2026: AIM instalments are due for businesses with a March balance date; ratio-option provisional tax is also due where applicable.",
+    "url": "https://www.ird.govt.nz/income-tax/provisional-tax/paying-your-provisional-tax/payment-dates-for-provisional-tax"
   },
   {
     "market": "NZ",
