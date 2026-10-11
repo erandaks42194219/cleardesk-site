@@ -24,8 +24,8 @@
   },
   {
     "market": "NZ",
-    "text": "From 1 October 2026: the FBT prescribed interest rate for employment-related loans increases from 5.77% to 6.07%.",
-    "url": "https://www.taxtechnical.ird.govt.nz/determinations/fringe-benefit-tax/prescribed-rate/2026/det-26-06"
+    "text": "From 6 October 2026: IRD may transfer excess prior-year income tax payments to the current income tax year after the earlier return is processed. Separate payments are still recommended for different periods.",
+    "url": "https://www.ird.govt.nz/updates/news-folder/2026/reducing-unintended-refunds-of-provisional-tax-payments"
   },
   {
     "market": "NZ",
@@ -51,6 +51,11 @@
     "market": "UAE",
     "text": "In-scope businesses above AED 50m revenue: ASP appointment extended to 30 October 2026; e-invoicing implementation remains 1 January 2027.",
     "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-targeted-amendments-to-einvoicing-system-decisions/"
+  },
+  {
+    "market": "UAE",
+    "text": "From 1 October 2026: UAE e-invoicing service providers move to direct accreditation under Ministerial Decision No. 168 of 2026; the former pre-approval framework is repealed.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-decision-on-accreditation-of-einvoicing-service-providers-under-updated-regulatory-framework/"
   }
 ];
   var pageMarket = document.body && document.body.getAttribute('data-market');
