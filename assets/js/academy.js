@@ -41,7 +41,7 @@
     fields.hidden=!isAcademy;fields.disabled=!isAcademy;
     form.querySelector('[name="_subject"]').value=isAcademy?'ClearDesk Academy training enquiry':'New ClearDesk website enquiry';
     message.required=!isAcademy;
-    message.placeholder=isAcademy?'Anything else you want us to know? (optional) / අමතර විස්තර (අත්‍යවශ්‍ය නොවේ)':'';
+    message.placeholder=isAcademy?'Anything else you want us to know? (optional)':'';
     syncPhone();
   }
   service.addEventListener('change',syncForm);preference.addEventListener('change',syncPhone);
@@ -56,7 +56,7 @@
   form.addEventListener('submit',function(){
     // Native POST to the existing mail handler. Never show a made-up success state.
     var button=form.querySelector('button[type="submit"]');
-    button.textContent='Sending… / යවමින්…';
-    window.setTimeout(function(){button.textContent='Send enquiry / විමසුම යවන්න';},15000);
+    button.textContent='Sending…';
+    window.setTimeout(function(){button.textContent='Send enquiry';},15000);
   });
 })();
