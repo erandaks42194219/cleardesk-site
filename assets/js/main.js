@@ -259,6 +259,7 @@
     if (!drawer) return;
     lastFocus = document.activeElement;
     drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
     document.body.classList.add('nav-open');
     if (burger) burger.setAttribute('aria-expanded', 'true');
     var first = drawer.querySelector('button, a');
@@ -268,6 +269,7 @@
   function closeDrawer() {
     if (!drawer) return;
     drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('nav-open');
     if (burger) burger.setAttribute('aria-expanded', 'false');
     document.removeEventListener('keydown', trapFocus);

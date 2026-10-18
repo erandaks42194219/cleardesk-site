@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/styles.css?v=11">
+  <link rel="stylesheet" href="../../assets/css/styles.css?v=22-academy">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService",
    "name":"ClearDesk Business Services",
@@ -91,7 +91,7 @@
 @media(max-width:800px){.price-story{grid-template-columns:1fr}.price-quick{display:block}.price-quick-buttons{justify-content:flex-start;margin-top:18px}.price-spotlight-main{grid-template-columns:1fr}}
 @media(max-width:550px){.price-spotlight-head,.price-spotlight-main,.spotlight-footer{padding-left:21px;padding-right:21px}.price-spotlight{max-height:92vh}.price-quick-buttons button{flex:1 1 43%;text-align:left}}
 @media(prefers-reduced-motion:reduce){.price-story-intro,.price-quick-buttons button{transition:none}.price-spotlight[open]{animation:none}}
-</style></head>
+</style><link rel="stylesheet" href="/assets/css/academy.css?v=1"></head>
 <body data-market="nz">
   <a class="skip-link" href="#main">Skip to content</a>
 
@@ -146,7 +146,7 @@
       <li class="nav-item"><a class="nav-page-link" href="../../careers/index.html">Careers</a></li>
       <li class="nav-item"><a class="nav-page-link" href="../../about/index.html">About</a></li>
       <li class="nav-item"><a class="nav-page-link" href="../../contact/index.html">Contact</a></li>
-    </ul>
+    <li class="nav-item"><a class="nav-page-link academy-nav-link" href="/academy/">Academy</a></li></ul>
       <div class="header-actions">
         <div class="market-switch" role="group" aria-label="Choose your market">
           <a href="../../uae/index.html">&#127462;&#127466; UAE</a>
@@ -166,7 +166,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
-    <div class="mobile-nav-body">
+    <div class="mobile-nav-body"><div class="academy-mobile-link"><a href="/academy/">ClearDesk Academy →</a><a href="/academy/si/" lang="si">සිංහල</a></div>
       <h4>United Arab Emirates</h4>
       <ul>
         <li><a href="../../uae/index.html">UAE overview</a></li>
@@ -259,7 +259,7 @@
         </div>
         <div>
           <h4>Services &amp; Automation</h4>
-          <ul>
+          <ul><li><a href="/academy/">ClearDesk Academy</a></li>
             <li><a href="../../uae/e-invoicing/index.html">UAE e-invoicing explained</a></li>
             <li><a href="../../uae/e-invoicing/timeline/index.html">Deadlines &amp; timeline</a></li>
             <li><a href="../../uae/e-invoicing/readiness-check/index.html">Free readiness check</a></li>
@@ -373,6 +373,6 @@ close.addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
 if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}}),{threshold:.08});document.querySelectorAll('.reveal').forEach(element=>io.observe(element))}else document.querySelectorAll('.reveal').forEach(element=>element.classList.add('visible'));
 })();
-</script><script src="../../assets/js/main.js?v=11"></script>
+</script><script src="../../assets/js/main.js?v=22-academy"></script>
 </body>
 </html>
