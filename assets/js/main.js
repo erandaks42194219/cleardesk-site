@@ -9,7 +9,7 @@
   var noticeMessages = [
   {
     "market": "NZ",
-    "text": "20 October 2026: September deductions are due for small-to-medium employers, and 1–15 October deductions are due for large employers.",
+    "text": "5 November 2026: deductions for wages and salaries paid from 16–31 October are due for large employers.",
     "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
   },
   {
@@ -29,8 +29,8 @@
   },
   {
     "market": "NZ",
-    "text": "20 October 2026: quarterly FBT return and payment are due for the period ending 30 September for employers with a March balance date.",
-    "url": "https://www.ird.govt.nz/employing-staff/payday-filing"
+    "text": "20 November 2026: October deductions are due for small-to-medium employers, and 1–15 November deductions are due for large employers.",
+    "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
   },
   {
     "market": "UAE",
