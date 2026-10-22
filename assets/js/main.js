@@ -54,8 +54,8 @@
   },
   {
     "market": "UAE",
-    "text": "From 1 October 2026: UAE e-invoicing service providers move to direct accreditation under Ministerial Decision No. 168 of 2026; the former pre-approval framework is repealed.",
-    "url": "https://mof.gov.ae/en/news/ministry-of-finance-issues-decision-on-accreditation-of-einvoicing-service-providers-under-updated-regulatory-framework/"
+    "text": "From 1 January 2027: transactions between members of the same Tax Group are temporarily excluded from e-invoicing for 24 months. UAE-local data storage is no longer required, but retention and FTA access duties remain.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-amends-electronic-invoicing-regulations-to-ease-the-burden-on-businesses/"
   }
 ];
   var pageMarket = document.body && document.body.getAttribute('data-market');
