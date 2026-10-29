@@ -14,12 +14,12 @@
   },
   {
     "market": "NZ",
-    "text": "28 October 2026: GST return and payment are due for registered businesses with a taxable period ending 30 September.",
+    "text": "30 November 2026: GST return and payment are due for registered businesses with a taxable period ending 31 October.",
     "url": "https://www.ird.govt.nz/gst/filing-and-paying-gst-and-refunds"
   },
   {
     "market": "NZ",
-    "text": "28 October 2026: AIM instalments are due for businesses with a March balance date; ratio-option provisional tax is also due where applicable.",
+    "text": "30 November 2026: AIM instalments are due for monthly GST filers with a March balance date.",
     "url": "https://www.ird.govt.nz/income-tax/provisional-tax/paying-your-provisional-tax/payment-dates-for-provisional-tax"
   },
   {
@@ -41,11 +41,6 @@
     "market": "UAE",
     "text": "Small Business Relief: eligible resident persons with revenue up to AED 3m may elect for qualifying tax periods ending by 31 December 2029. Exclusions and conditions apply.",
     "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-extension-of-small-business-relief-for-corporate-tax-purposes-until-31-december-2029/"
-  },
-  {
-    "market": "UAE",
-    "text": "28 October 2026: the FTA lists a VAT-return deadline for applicable registered persons. Check the tax period shown in EmaraTax.",
-    "url": "https://tax.gov.ae/en/announcements.aspx"
   },
   {
     "market": "UAE",
