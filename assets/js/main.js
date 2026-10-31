@@ -44,11 +44,6 @@
   },
   {
     "market": "UAE",
-    "text": "In-scope businesses above AED 50m revenue: ASP appointment extended to 30 October 2026; e-invoicing implementation remains 1 January 2027.",
-    "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-targeted-amendments-to-einvoicing-system-decisions/"
-  },
-  {
-    "market": "UAE",
     "text": "From 1 January 2027: transactions between members of the same Tax Group are temporarily excluded from e-invoicing for 24 months. UAE-local data storage is no longer required, but retention and FTA access duties remain.",
     "url": "https://mof.gov.ae/en/news/ministry-of-finance-amends-electronic-invoicing-regulations-to-ease-the-burden-on-businesses/"
   }
