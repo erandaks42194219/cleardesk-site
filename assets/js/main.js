@@ -46,6 +46,11 @@
     "market": "UAE",
     "text": "From 1 January 2027: transactions between members of the same Tax Group are temporarily excluded from e-invoicing for 24 months. UAE-local data storage is no longer required, but retention and FTA access duties remain.",
     "url": "https://mof.gov.ae/en/news/ministry-of-finance-amends-electronic-invoicing-regulations-to-ease-the-burden-on-businesses/"
+  },
+  {
+    "market": "UAE",
+    "text": "30 October 2026: UAE e-invoicing implementation penalties were revised to AED 5,000 initially, then AED 5,000 per month, capped at AED 50,000 over 12 consecutive months. The system-failure notification penalty was removed.",
+    "url": "https://mof.gov.ae/en/news/mof-announces-updated-administrative-penalties-related-to-the-uae-einvoicing-system-to-enhance-clarity-and-support-business-compliance/"
   }
 ];
   var pageMarket = document.body && document.body.getAttribute('data-market');
