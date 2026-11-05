@@ -9,7 +9,7 @@
   var noticeMessages = [
   {
     "market": "NZ",
-    "text": "5 November 2026: deductions for wages and salaries paid from 16–31 October are due for large employers.",
+    "text": "5 December 2026: deductions for wages and salaries paid from 16–30 November are due for large employers.",
     "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
   },
   {
