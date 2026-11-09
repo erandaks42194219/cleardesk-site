@@ -580,3 +580,243 @@
   });
 
 })();
+/* Launch Desk: no client data is submitted, stored or added to URLs. */
+(function () {
+  'use strict';
+  const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-startup-carousel]').forEach(function (carousel) {
+    const slides = Array.from(carousel.querySelectorAll('[data-startup-slide]'));
+    const pause = carousel.querySelector('[data-startup-pause]');
+    let current = 0, paused = motion.matches, timer;
+    function render() {
+      slides.forEach((slide, i) => { slide.hidden = i !== current; });
+      carousel.querySelector('[data-startup-position]').textContent = '0' + (current + 1) + ' / 03';
+      pause.textContent = paused ? 'Resume' : 'Pause';
+      pause.setAttribute('aria-label', paused ? 'Resume startup carousel' : 'Pause startup carousel');
+    }
+    function schedule() {
+      clearInterval(timer);
+      if (!paused && !document.hidden && !carousel.matches(':hover') && !carousel.contains(document.activeElement)) {
+        timer = setInterval(() => { current = (current + 1) % slides.length; render(); }, 8000);
+      }
+    }
+    function move(step) { current = (current + step + slides.length) % slides.length; paused = true; render(); schedule(); }
+    carousel.querySelector('[data-startup-prev]').addEventListener('click', () => move(-1));
+    carousel.querySelector('[data-startup-next]').addEventListener('click', () => move(1));
+    pause.addEventListener('click', () => { paused = !paused; render(); schedule(); });
+    carousel.addEventListener('mouseenter', schedule);
+    carousel.addEventListener('mouseleave', schedule);
+    carousel.addEventListener('focusin', schedule);
+    carousel.addEventListener('focusout', () => setTimeout(schedule, 0));
+    document.addEventListener('visibilitychange', schedule);
+    motion.addEventListener('change', () => { if (motion.matches) paused = true; render(); schedule(); });
+    render(); schedule();
+  });
+  const builder = document.querySelector('[data-startup-builder]');
+  if (!builder) return;
+  const tasks = Array.from(builder.querySelectorAll('[data-startup-task]'));
+  const field = id => document.getElementById('startup-' + id);
+  const money = cents => new Intl.NumberFormat('en-NZ', { style: 'currency', currency: 'NZD' }).format(cents / 100);
+  const discountType = field('discount-type'), discountValue = field('discount-value');
+  const download = builder.querySelector('[data-startup-pdf]');
+  const status = builder.querySelector('[data-startup-download-status]');
+  let downloading = false;
+  function calculate() {
+    const chosen = tasks.filter(task => task.checked);
+    const subtotal = chosen.reduce((sum, task) => sum + Number(task.dataset.price), 0);
+    const raw = Number(discountValue.value);
+    const max = discountType.value === 'percent' ? 100 : subtotal / 100;
+    const invalid = discountValue.validity.badInput || !Number.isFinite(raw) || raw < 0 || raw > max;
+    const safe = Number.isFinite(raw) ? Math.min(max, Math.max(0, raw)) : 0;
+    const discount = Math.min(subtotal, Math.round(discountType.value === 'percent' ? subtotal * safe / 100 : safe * 100));
+    const net = subtotal - discount;
+    const gst = Math.round(net * 15 / 100);
+    const official = [];
+    if (field('fees').checked) {
+      if (chosen.some(t => t.id === 'task-reserve')) official.push({ title: 'Company name reservation', amount: 1150 });
+      if (chosen.some(t => t.id === 'task-company')) official.push({ title: 'Company incorporation', amount: 13655 });
+    }
+    const fees = official.reduce((sum, fee) => sum + fee.amount, 0);
+    return { chosen, subtotal, discount, net, gst, fees, serviceTotal: net + gst, total: net + gst + fees, official, invalid, max };
+  }
+  function update() {
+    const quote = calculate();
+    builder.querySelectorAll('[data-total]').forEach(el => {
+      el.textContent = (el.dataset.total === 'discount' ? '−' : '') + money(quote[el.dataset.total]);
+    });
+    builder.querySelector('[data-startup-count]').textContent = quote.chosen.length;
+    const list = builder.querySelector('[data-startup-selected]');
+    list.replaceChildren();
+    if (!quote.chosen.length) { const li = document.createElement('li'); li.textContent = 'No tasks selected yet.'; list.append(li); }
+    quote.chosen.forEach(task => {
+      const li = document.createElement('li'), name = document.createElement('span'), price = document.createElement('b');
+      name.textContent = task.dataset.title; price.textContent = money(Number(task.dataset.price));
+      li.append(name, price); list.append(li);
+    });
+    builder.querySelector('[data-startup-fee-note]').textContent = quote.official.length ? quote.official.map(f => f.title + ': ' + money(f.amount)).join(' · ') + '. Paid separately to the Companies Office; GST already included.' : (field('fees').checked ? 'No government fees apply to the selected tasks.' : 'Government fees are excluded from this budget and may still be payable separately.');
+    discountValue.max = quote.max;
+    discountValue.setAttribute('aria-invalid', String(quote.invalid));
+    discountValue.setAttribute('aria-describedby', 'startup-discount-error');
+    const error = field('discount-error');
+    error.hidden = !quote.invalid;
+    error.textContent = 'Enter a discount between 0 and ' + (discountType.value === 'percent' ? '100%.' : money(quote.subtotal) + '.') + ' The displayed discount is capped; correct the value before downloading.';
+    download.disabled = downloading || !quote.chosen.length || quote.invalid;
+    builder.querySelectorAll('[data-startup-group]').forEach(button => {
+      const groupTasks = Array.from(button.closest('fieldset').querySelectorAll('[data-startup-task]'));
+      button.textContent = groupTasks.every(t => t.checked) ? 'Clear this group' : 'Select this group';
+    });
+  }
+  builder.addEventListener('change', update);
+  discountValue.addEventListener('input', update);
+  discountType.addEventListener('change', () => { discountValue.value = '0'; update(); });
+  builder.querySelector('[data-startup-all]').addEventListener('click', () => { tasks.forEach(t => { t.checked = true; }); update(); });
+  builder.querySelector('[data-startup-clear]').addEventListener('click', () => { tasks.forEach(t => { t.checked = false; }); discountValue.value = '0'; update(); });
+  builder.querySelectorAll('[data-startup-group]').forEach(button => button.addEventListener('click', () => {
+    const groupTasks = Array.from(button.closest('fieldset').querySelectorAll('[data-startup-task]'));
+    const checked = !groupTasks.every(t => t.checked);
+    groupTasks.forEach(t => { t.checked = checked; }); update();
+  }));
+  builder.querySelector('[data-startup-reset]').addEventListener('click', () => {
+    if (!window.confirm('Clear all selected tasks, client details, notes and discounts for a new client? Download any quote you need first.')) return;
+    tasks.forEach(t => { t.checked = false; });
+    ['client', 'business', 'notes'].forEach(id => { field(id).value = ''; });
+    discountType.value = 'amount'; discountValue.value = '0'; field('fees').checked = true;
+    status.textContent = ''; update();
+    builder.querySelector('.startup-client-details').open = true;
+    field('client').focus();
+  });
+  // Draw each PDF page locally. Canvas preserves Unicode client names without an
+  // external PDF dependency or uploading personal information to a PDF service.
+  async function quotePdf(quote) {
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const W = 1240, H = 1754, left = 85, right = 1155, bottom = 1580;
+    const pages = []; let canvas, ctx, y;
+    const date = new Date();
+    const dateLabel = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', day: 'numeric', month: 'long', year: 'numeric' }).format(date);
+    const dateParts = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(date);
+    const part = type => dateParts.find(p => p.type === type).value;
+    const ref = 'CD-' + part('year') + part('month') + part('day') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+    function startPage() {
+      canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H; ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#0A1628'; ctx.fillRect(0, 0, W, 215);
+      ctx.fillStyle = '#E8A020'; ctx.fillRect(left, 60, 40, 6);
+      ctx.fillStyle = '#fff'; ctx.font = '700 37px Inter, sans-serif'; ctx.fillText('ClearDesk Launch Desk', left, 118);
+      ctx.fillStyle = '#c5d3e4'; ctx.font = '20px Inter, sans-serif'; ctx.fillText('New Zealand business startup | Itemised draft quote', left, 163);
+      y = 265;
+    }
+    function finishPage() {
+      ctx.strokeStyle = '#E2E8F0'; ctx.beginPath(); ctx.moveTo(left, 1630); ctx.lineTo(right, 1630); ctx.stroke();
+      ctx.fillStyle = '#64748B'; ctx.font = '17px Inter, sans-serif';
+      ctx.fillText('ClearDesk Business Services · info@cleardesk.co.nz · 020 4010 1914', left, 1668);
+      ctx.fillText(ref + ' · Draft — ClearDesk confirmation required', left, 1700);
+      ctx.textAlign = 'right'; ctx.fillText('Page ' + (pages.length + 1), right, 1700); ctx.textAlign = 'left';
+      pages.push(canvas.toDataURL('image/jpeg', 0.92));
+    }
+    function ensure(height) { if (y + height > bottom) { finishPage(); startPage(); } }
+    function lines(text, width, font) {
+      ctx.font = font;
+      const result = [];
+      String(text).split('\n').forEach(paragraph => {
+        let line = '';
+        // Character-level fallback safely wraps long unbroken names and URLs.
+        paragraph.split(/\s+/).forEach(word => {
+          if (ctx.measureText(line + (line ? ' ' : '') + word).width <= width) { line += (line ? ' ' : '') + word; return; }
+          if (line) { result.push(line); line = ''; }
+          for (const char of word) {
+            if (line && ctx.measureText(line + char).width > width) { result.push(line); line = ''; }
+            line += char;
+          }
+        });
+        result.push(line);
+      });
+      return result;
+    }
+    function paragraph(text, size = 22, color = '#526276', bold = false, width = right - left) {
+      const font = (bold ? '700 ' : '') + size + 'px Inter, sans-serif';
+      const wrapped = lines(text, width, font), lineHeight = Math.ceil(size * 1.5);
+      if (wrapped.length * lineHeight < bottom - 265) ensure(wrapped.length * lineHeight);
+      wrapped.forEach(line => { ensure(lineHeight); ctx.font = font; ctx.fillStyle = color; ctx.fillText(line, left, y); y += lineHeight; });
+      y += 10;
+    }
+    function totalRow(label, amount, strong = false) {
+      ensure(48); ctx.fillStyle = strong ? '#1B5EAE' : '#2C3A4B'; ctx.font = (strong ? '700 ' : '') + '24px Inter, sans-serif';
+      ctx.fillText(label, left, y); ctx.textAlign = 'right'; ctx.fillText(amount, right, y); ctx.textAlign = 'left'; y += 45;
+    }
+    startPage();
+    paragraph('DRAFT QUOTE — CLEARDESK APPROVAL REQUIRED', 19, '#1B5EAE', true);
+    paragraph('Reference: ' + ref + '   |   Prepared: ' + dateLabel, 20);
+    paragraph('Client: ' + (field('client').value.trim() || 'Not provided'), 22, '#0A1628', true);
+    paragraph('Business: ' + (field('business').value.trim() || 'To be confirmed'), 22);
+    paragraph('One-off startup setup. All service line prices are NZD excluding GST. This is not an invoice, tax document or accepted engagement.', 20);
+    let group = '';
+    quote.chosen.forEach(task => {
+      const description = lines(task.dataset.description, right - left - 15, '20px Inter, sans-serif');
+      const titleLines = lines(task.dataset.title, right - left - 160, '700 23px Inter, sans-serif');
+      ensure(40 + titleLines.length * 32 + description.length * 29 + (group !== task.dataset.group ? 60 : 0));
+      if (group !== task.dataset.group) { group = task.dataset.group; y += 10; paragraph(group.toUpperCase(), 19, '#1B5EAE', true); }
+      ctx.font = '700 23px Inter, sans-serif'; ctx.fillStyle = '#0A1628';
+      titleLines.forEach((line, i) => ctx.fillText(line, left, y + i * 32));
+      ctx.textAlign = 'right'; ctx.fillText(money(Number(task.dataset.price)), right, y); ctx.textAlign = 'left';
+      y += titleLines.length * 32 + 6; ctx.font = '20px Inter, sans-serif'; ctx.fillStyle = '#526276';
+      description.forEach(line => { ctx.fillText(line, left, y); y += 29; });
+      y += 15; ctx.strokeStyle = '#E2E8F0'; ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(right, y); ctx.stroke(); y += 28;
+    });
+    ensure(400); y += 15;
+    paragraph('YOUR STARTUP BUDGET', 23, '#0A1628', true);
+    totalRow('Service subtotal (excluding GST)', money(quote.subtotal));
+    totalRow('Proposed discount' + (discountType.value === 'percent' ? ' (' + discountValue.value + '%)' : ''), '−' + money(quote.discount));
+    totalRow('Services after discount', money(quote.net));
+    totalRow('GST on services (15%)', money(quote.gst));
+    totalRow('ClearDesk total (including GST)', money(quote.serviceTotal), true);
+    totalRow('Government fees (GST already included)', money(quote.fees));
+    totalRow('Total startup budget (NZD)', money(quote.total), true);
+    paragraph(quote.official.length ? 'Paid separately by the client: ' + quote.official.map(f => f.title + ' ' + money(f.amount)).join('; ') + '.' : 'No government fees included. Where applicable, they are payable separately.', 19);
+    if (field('notes').value.trim()) { paragraph('SCOPE NOTES', 21, '#0A1628', true); paragraph(field('notes').value.trim(), 20); }
+    paragraph('BEFORE WE BEGIN', 21, '#0A1628', true);
+    [
+      'ClearDesk must confirm scope, eligibility, dependencies, prices, proposed discounts, GST treatment, third-party charges, delivery timing and payment terms in writing before work starts. No service is booked and no payment is taken by this calculator.',
+      'Standard scope: one straightforward NZ startup, up to two individual directors/shareholders. Company formation support requires eligibility, authority and AML/CFT compliance review before acceptance. Registration and bank approval are not guaranteed. You complete identity checks and choose providers.',
+      'You own the domain, website and provider accounts. A suitable existing brand, site or accounting file may be required if related setup tasks are not selected. Google Business Profiles are for eligible in-person/service-area businesses, not online-only businesses; Google controls verification.',
+      'Excluded unless separately agreed: ongoing subscriptions, hosting, renewals, bookkeeping, payroll, tax returns, licences, legal documents, trademark work, advertising, photography, e-commerce, booking systems, custom integrations and extra revisions. Third-party renewals are not part of this one-off total.',
+      'Government fees checked 10 November 2026: name reservation NZ$11.50 and incorporation NZ$136.55 including GST. Confirm current charges before filing: companies-register.companiesoffice.govt.nz/help-centre/managing-your-online-account/schedule-of-fees/',
+      'General information only, not personalised tax, legal or financial advice. Terms: cleardesk.co.nz/legal/terms/ | Privacy: cleardesk.co.nz/legal/privacy/. ClearDesk Business Services is operated by Yasara Solutions Limited. Contact info@cleardesk.co.nz to confirm this draft.'
+    ].forEach(text => paragraph(text, 19));
+    finishPage();
+    // Minimal PDF 1.4 writer. JPEG pages support every script rendered by the browser.
+    const encoder = new TextEncoder(), chunks = [], offsets = [0]; let length = 0;
+    const add = data => { const bytes = typeof data === 'string' ? encoder.encode(data) : data; chunks.push(bytes); length += bytes.length; };
+    const obj = (id, content) => { offsets[id] = length; add(id + ' 0 obj\n' + content + '\nendobj\n'); };
+    add('%PDF-1.4\n');
+    obj(1, '<< /Type /Catalog /Pages 2 0 R >>');
+    obj(2, '<< /Type /Pages /Count ' + pages.length + ' /Kids [' + pages.map((_, i) => (3 + i * 3) + ' 0 R').join(' ') + '] >>');
+    pages.forEach((data, i) => {
+      const id = 3 + i * 3, imageId = id + 1, contentId = id + 2;
+      obj(id, '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /XObject << /Im0 ' + imageId + ' 0 R >> >> /Contents ' + contentId + ' 0 R >>');
+      const binary = atob(data.split(',')[1]), bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+      offsets[imageId] = length; add(imageId + ' 0 obj\n<< /Type /XObject /Subtype /Image /Width ' + W + ' /Height ' + H + ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + bytes.length + ' >>\nstream\n'); add(bytes); add('\nendstream\nendobj\n');
+      const stream = 'q\n595.28 0 0 841.89 0 0 cm\n/Im0 Do\nQ';
+      obj(contentId, '<< /Length ' + encoder.encode(stream).length + ' >>\nstream\n' + stream + '\nendstream');
+    });
+    const xref = length, size = 3 + pages.length * 3;
+    add('xref\n0 ' + size + '\n0000000000 65535 f \n');
+    for (let i = 1; i < size; i++) add(String(offsets[i]).padStart(10, '0') + ' 00000 n \n');
+    add('trailer\n<< /Size ' + size + ' /Root 1 0 R >>\nstartxref\n' + xref + '\n%%EOF');
+    return { blob: new Blob(chunks, { type: 'application/pdf' }), filename: 'ClearDesk-Launch-Desk-' + ref + '.pdf' };
+  }
+  download.addEventListener('click', async () => {
+    const quote = calculate(); if (!quote.chosen.length || quote.invalid || downloading) return;
+    downloading = true; update(); status.textContent = 'Preparing your itemised PDF…';
+    try {
+      const pdf = await quotePdf(quote);
+      const url = URL.createObjectURL(pdf.blob), link = document.createElement('a');
+      link.href = url; link.download = pdf.filename; document.body.append(link); link.click(); link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      status.textContent = 'Your PDF is ready. Check your downloads, or save it from the PDF preview. Clear the client details when finished.';
+    } catch (error) {
+      status.textContent = 'The PDF could not be created in this browser. Your selection is still here. Please try again in an up-to-date browser or contact ClearDesk.';
+      console.error('Quote PDF generation failed', error);
+    } finally { downloading = false; update(); }
+  });
+  update();
+})();
