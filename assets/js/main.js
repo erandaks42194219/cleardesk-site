@@ -24,8 +24,8 @@
   },
   {
     "market": "NZ",
-    "text": "From 6 October 2026: IRD may transfer excess prior-year income tax payments to the current income tax year after the earlier return is processed. Separate payments are still recommended for different periods.",
-    "url": "https://www.ird.govt.nz/updates/news-folder/2026/reducing-unintended-refunds-of-provisional-tax-payments"
+    "text": "3 November 2026: MBIE launched a trial of the NZBN Business Passport, a mobile digital credential for verifying business identity and authority. The initial trial is limited to selected Westpac business customers.",
+    "url": "https://www.mbie.govt.nz/about/news/new-digital-credential-cuts-paperwork-for-kiwi-businesses"
   },
   {
     "market": "NZ",
