@@ -621,6 +621,23 @@
   const download = builder.querySelector('[data-startup-pdf]');
   const status = builder.querySelector('[data-startup-download-status]');
   let downloading = false;
+  // Use Auckland calendar dates, independent of the viewer's timezone and DST.
+  function quoteDates(now = new Date()) {
+    const parts = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(now);
+    const part = type => parts.find(p => p.type === type).value;
+    const issued = new Date(Date.UTC(Number(part('year')), Number(part('month')) - 1, Number(part('day'))));
+    const expires = new Date(issued);
+    expires.setUTCDate(expires.getUTCDate() + 7);
+    const format = new Intl.DateTimeFormat('en-NZ', { timeZone: 'UTC', day: 'numeric', month: 'long', year: 'numeric' });
+    return { issued: format.format(issued), expires: format.format(expires), issuedISO: issued.toISOString().slice(0, 10), expiresISO: expires.toISOString().slice(0, 10), referenceDate: part('year') + part('month') + part('day') };
+  }
+  function showDates(dates) {
+    [['issued', dates.issued, dates.issuedISO], ['expires', dates.expires, dates.expiresISO]].forEach(([name, label, iso]) => {
+      const element = builder.querySelector('[data-startup-' + name + ']');
+      element.textContent = label;
+      element.dateTime = iso;
+    });
+  }
   function calculate() {
     const chosen = tasks.filter(task => task.checked);
     const subtotal = chosen.reduce((sum, task) => sum + Number(task.dataset.price), 0);
@@ -640,6 +657,7 @@
     return { chosen, subtotal, discount, net, gst, fees, serviceTotal: net + gst, total: net + gst + fees, official, invalid, max };
   }
   function update() {
+    showDates(quoteDates());
     const quote = calculate();
     builder.querySelectorAll('[data-total]').forEach(el => {
       el.textContent = (el.dataset.total === 'discount' ? '−' : '') + money(quote[el.dataset.total]);
@@ -679,7 +697,7 @@
   builder.querySelector('[data-startup-reset]').addEventListener('click', () => {
     if (!window.confirm('Clear all selected tasks, client details, notes and discounts for a new client? Download any quote you need first.')) return;
     tasks.forEach(t => { t.checked = false; });
-    ['client', 'business', 'notes'].forEach(id => { field(id).value = ''; });
+    ['client', 'business', 'phone', 'email', 'address', 'created-by', 'notes'].forEach(id => { field(id).value = ''; });
     discountType.value = 'amount'; discountValue.value = '0'; field('fees').checked = true;
     status.textContent = ''; update();
     builder.querySelector('.startup-client-details').open = true;
@@ -691,11 +709,8 @@
     if (document.fonts && document.fonts.ready) await document.fonts.ready;
     const W = 1240, H = 1754, left = 85, right = 1155, bottom = 1580;
     const pages = []; let canvas, ctx, y;
-    const date = new Date();
-    const dateLabel = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', day: 'numeric', month: 'long', year: 'numeric' }).format(date);
-    const dateParts = new Intl.DateTimeFormat('en-NZ', { timeZone: 'Pacific/Auckland', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(date);
-    const part = type => dateParts.find(p => p.type === type).value;
-    const ref = 'CD-' + part('year') + part('month') + part('day') + '-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+    const details = quote.details, dates = quote.dates;
+    const ref = 'CD-' + dates.referenceDate + '-' + Math.random().toString(36).slice(2, 6).toUpperCase();
     function startPage() {
       canvas = document.createElement('canvas'); canvas.width = W; canvas.height = H; ctx = canvas.getContext('2d');
       ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, W, H);
@@ -745,9 +760,14 @@
     }
     startPage();
     paragraph('DRAFT QUOTE — CLEARDESK APPROVAL REQUIRED', 19, '#1B5EAE', true);
-    paragraph('Reference: ' + ref + '   |   Prepared: ' + dateLabel, 20);
-    paragraph('Client: ' + (field('client').value.trim() || 'Not provided'), 22, '#0A1628', true);
-    paragraph('Business: ' + (field('business').value.trim() || 'To be confirmed'), 22);
+    paragraph('Reference: ' + ref + '   |   Prepared: ' + dates.issued, 20);
+    paragraph('Valid until: ' + dates.expires + ' — 7 calendar days only (New Zealand dates).', 20, '#1B5EAE', true);
+    paragraph('Client: ' + (details.client || 'Not provided'), 22, '#0A1628', true);
+    paragraph('Business: ' + (details.business || 'To be confirmed'), 22);
+    paragraph('Contact number: ' + (details.phone || 'Not provided'), 20);
+    paragraph('Email: ' + (details.email || 'Not provided'), 20);
+    paragraph('Client address: ' + (details.address || 'Not provided'), 20);
+    paragraph('Quote created by: ' + (details['created-by'] || 'Not provided'), 20, '#0A1628', true);
     paragraph('One-off startup setup. All service line prices are NZD excluding GST. This is not an invoice, tax document or accepted engagement.', 20);
     let group = '';
     quote.chosen.forEach(task => {
@@ -765,15 +785,17 @@
     ensure(400); y += 15;
     paragraph('YOUR STARTUP BUDGET', 23, '#0A1628', true);
     totalRow('Service subtotal (excluding GST)', money(quote.subtotal));
-    totalRow('Proposed discount' + (discountType.value === 'percent' ? ' (' + discountValue.value + '%)' : ''), '−' + money(quote.discount));
+    totalRow('Proposed discount' + (quote.discountType === 'percent' ? ' (' + quote.discountValue + '%)' : ''), '−' + money(quote.discount));
     totalRow('Services after discount', money(quote.net));
     totalRow('GST on services (15%)', money(quote.gst));
     totalRow('ClearDesk total (including GST)', money(quote.serviceTotal), true);
     totalRow('Government fees (GST already included)', money(quote.fees));
     totalRow('Total startup budget (NZD)', money(quote.total), true);
     paragraph(quote.official.length ? 'Paid separately by the client: ' + quote.official.map(f => f.title + ' ' + money(f.amount)).join('; ') + '.' : 'No government fees included. Where applicable, they are payable separately.', 19);
-    if (field('notes').value.trim()) { paragraph('SCOPE NOTES', 21, '#0A1628', true); paragraph(field('notes').value.trim(), 20); }
-    paragraph('BEFORE WE BEGIN', 21, '#0A1628', true);
+    if (details.notes) { paragraph('SCOPE NOTES', 21, '#0A1628', true); paragraph(details.notes, 20); }
+    ensure(160);
+    paragraph('QUOTE VALIDITY & STARTUP CONDITIONS', 21, '#0A1628', true);
+    paragraph('This quote is valid for 7 calendar days from ' + dates.issued + ' until ' + dates.expires + ' (New Zealand dates). After that date, please ask ClearDesk to confirm a fresh quote. This draft remains subject to ClearDesk approval.', 19);
     [
       'ClearDesk must confirm scope, eligibility, dependencies, prices, proposed discounts, GST treatment, third-party charges, delivery timing and payment terms in writing before work starts. No service is booked and no payment is taken by this calculator.',
       'Standard scope: one straightforward NZ startup, up to two individual directors/shareholders. Company formation support requires eligibility, authority and AML/CFT compliance review before acceptance. Registration and bank approval are not guaranteed. You complete identity checks and choose providers.',
@@ -782,6 +804,14 @@
       'Government fees checked 10 November 2026: name reservation NZ$11.50 and incorporation NZ$136.55 including GST. Confirm current charges before filing: companies-register.companiesoffice.govt.nz/help-centre/managing-your-online-account/schedule-of-fees/',
       'General information only, not personalised tax, legal or financial advice. Terms: cleardesk.co.nz/legal/terms/ | Privacy: cleardesk.co.nz/legal/privacy/. ClearDesk Business Services is operated by Yasara Solutions Limited. Contact info@cleardesk.co.nz to confirm this draft.'
     ].forEach(text => paragraph(text, 19));
+    finishPage();
+    startPage();
+    paragraph('GENERAL SERVICE TERMS & CONDITIONS', 24, '#0A1628', true);
+    paragraph('The following are ClearDesk’s existing general service terms. Separate website offer conditions, where applicable, are available at cleardesk.co.nz/legal/terms/.', 19);
+    quote.terms.forEach(item => {
+      if (item.heading) ensure(130);
+      paragraph(item.text, item.heading ? 21 : 19, item.heading ? '#0A1628' : '#526276', item.heading);
+    });
     finishPage();
     // Minimal PDF 1.4 writer. JPEG pages support every script rendered by the browser.
     const encoder = new TextEncoder(), chunks = [], offsets = [0]; let length = 0;
@@ -806,6 +836,13 @@
   }
   download.addEventListener('click', async () => {
     const quote = calculate(); if (!quote.chosen.length || quote.invalid || downloading) return;
+    // Snapshot the complete quote before waiting for fonts or generating pages.
+    quote.details = Object.fromEntries(['client', 'business', 'phone', 'email', 'address', 'created-by', 'notes'].map(id => [id, field(id).value.trim()]));
+    quote.dates = quoteDates();
+    quote.discountType = discountType.value;
+    quote.discountValue = discountValue.value;
+    quote.terms = Array.from(builder.querySelectorAll('[data-startup-service-terms] h2, [data-startup-service-terms] p, [data-startup-service-terms] li'), el => ({ heading: el.tagName === 'H2', text: el.textContent.replace(/\s+/g, ' ').trim() }));
+    showDates(quote.dates);
     downloading = true; update(); status.textContent = 'Preparing your itemised PDF…';
     try {
       const pdf = await quotePdf(quote);
