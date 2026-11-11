@@ -49,8 +49,8 @@
   },
   {
     "market": "UAE",
-    "text": "30 October 2026: UAE e-invoicing implementation penalties were revised to AED 5,000 initially, then AED 5,000 per month, capped at AED 50,000 over 12 consecutive months. The system-failure notification penalty was removed.",
-    "url": "https://mof.gov.ae/en/news/mof-announces-updated-administrative-penalties-related-to-the-uae-einvoicing-system-to-enhance-clarity-and-support-business-compliance/"
+    "text": "16 November 2026: the FTA lists the final deadline for affected Excise Tax registrants to file their Excise return. Confirm your assigned obligation in EmaraTax.",
+    "url": "https://tax.gov.ae/en/announcements.aspx"
   },
   {
     "market": "UAE",
