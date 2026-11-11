@@ -1750,3 +1750,78 @@ body.nav-open { overflow: hidden; }
 @media(max-width:800px){.startup-mobile-budget{display:flex;position:fixed;z-index:90;left:0;right:0;bottom:0;padding:12px 20px max(12px,env(safe-area-inset-bottom));justify-content:space-between;gap:15px;background:#0A1628;color:#fff;box-shadow:0 -5px 20px #0002}.startup-mobile-budget small{display:block;font-size:.6rem;color:#c5d3e4}.startup-mobile-budget b{display:block;font-size:1.1rem;color:#E8A020}.startup-mobile-budget a{align-self:center;border:1px solid #7388a2;border-radius:7px;padding:12px;color:#fff;font-size:.73rem;min-height:44px}.startup-page{padding-bottom:85px}.startup-page .wa-float{bottom:100px}.startup-summary-head{position:static}}
 @media(max-width:800px){.startup-page .quick-whatsapp{bottom:100px}}
 .startup-quote-validity{display:grid;gap:7px;margin:20px 0;padding:15px;border-left:3px solid #E8A020;border-radius:0 8px 8px 0;background:#f4f8fd;font-size:.73rem;color:#0A1628}.startup-quote-validity small{font-size:.65rem;line-height:1.6;color:#526276}.startup-quote-terms{margin:20px 0;padding:16px 0;border-top:1px solid #E2E8F0;border-bottom:1px solid #E2E8F0;overflow-wrap:anywhere}.startup-quote-terms summary{font-size:.75rem;color:#1B5EAE;font-weight:600;cursor:pointer;min-height:32px}.startup-quote-terms [data-startup-service-terms]{font-size:.72rem;line-height:1.7}.startup-quote-terms h2{font-size:.85rem;line-height:1.5;margin:20px 0 8px}.startup-quote-terms ul{padding-left:18px}.startup-quote-terms a{text-decoration:underline}
+
+/* Launch Desk public catalogue — complete service scope without the quotation form. */
+.launch-public {padding-bottom:0}
+.launch-public .quick-whatsapp{bottom:24px}
+.launch-introduction{padding:72px 0 0;background:#F7F9FC}
+.launch-introduction > .container > h2{font-size:clamp(1.8rem,3.5vw,2.8rem);max-width:750px;letter-spacing:-.04em;line-height:1.15}
+.launch-introduction > .container > p:not(.startup-scope-note){max-width:700px;color:#64748B;font-size:1rem;line-height:1.8;margin:20px 0 30px}
+.launch-segment-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:32px 0}
+.launch-segment-nav a{display:flex;flex-direction:column;gap:12px;padding:18px;background:white;border:1px solid #E2E8F0;border-radius:10px;color:#0A1628;font-size:.8rem;font-weight:600;line-height:1.5;transition:border-color .2s,transform .2s}
+.launch-segment-nav a span{color:#1B5EAE;font-size:.7rem}
+.launch-segment-nav a:hover{border-color:#1B5EAE;transform:translateY(-3px)}
+.launch-segment{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,2fr);gap:52px;padding:52px 0;border-top:1px solid #E2E8F0;scroll-margin-top:130px}
+.launch-segment-intro{align-self:start;position:sticky;top:120px}
+.launch-segment-icon{display:grid;place-items:center;width:58px;height:58px;margin-bottom:24px;background:#1B5EAE;color:#fff;border-radius:15px}
+.launch-segment-icon svg{width:28px;height:28px}
+.launch-segment-intro h2{font-size:clamp(1.5rem,2.7vw,2rem);line-height:1.2;letter-spacing:-.035em;margin:12px 0 18px}
+.launch-segment-intro p{font-size:.9rem;line-height:1.7;color:#64748B;margin-bottom:20px}
+.launch-segment-intro a{font-size:.8rem;font-weight:600;display:inline-block;padding:12px 0;color:#1B5EAE}
+.launch-service-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.launch-service-card{padding:24px;border:1px solid #E2E8F0;border-radius:12px;background:#fff;min-width:0;transition:transform .2s,border-color .2s}
+.launch-service-card:hover{transform:translateY(-3px);border-color:#4A90D9}
+.launch-service-number{display:block;font-size:.68rem;letter-spacing:.08em;color:#1B5EAE;font-weight:700;margin-bottom:14px}
+.launch-service-card h3{font-size:1rem;color:#0A1628;line-height:1.45;margin:0 0 12px}
+.launch-service-card p{font-size:.84rem;color:#64748B;line-height:1.8;margin:0;overflow-wrap:anywhere}
+.launch-next{padding:65px 0;background:#fff}
+.launch-next-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding-bottom:50px}
+.launch-next h2{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.2;letter-spacing:-.03em;margin:15px 0}
+.launch-next-grid p{font-size:.95rem;line-height:1.8;color:#64748B;margin-bottom:24px}
+.launch-steps{list-style:none;margin:0;padding:0;display:grid;gap:24px}
+.launch-steps li{display:flex;gap:20px;border-bottom:1px solid #E2E8F0;padding-bottom:16px}
+.launch-steps li > span{color:#1B5EAE;font-size:.8rem;font-weight:700;padding-top:4px}
+.launch-steps h3{font-size:1rem;margin:0 0 8px}
+.launch-steps p{font-size:.85rem;margin:0}
+.launch-staff-access{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0 0;margin-top:40px;border-top:1px solid #E2E8F0;scroll-margin-top:120px}
+.launch-staff-access strong{font-size:.85rem}
+.launch-staff-access p{font-size:.75rem;color:#64748B;margin:7px 0 0}
+.launch-staff-access .btn{font-size:.8rem;white-space:normal;text-align:center}
+.launch-public a:focus-visible,.quote-private a:focus-visible{outline:3px solid #E8A020;outline-offset:4px}
+.quote-private-header{background:#0A1628;color:#fff;padding:20px 0}
+.quote-private-header > .container{display:flex;gap:20px;align-items:center;justify-content:space-between}
+.quote-brand{display:flex;align-items:center;gap:14px;color:#fff}
+.quote-brand strong{display:block;font:700 1.4rem 'Plus Jakarta Sans',sans-serif;color:#fff}
+.quote-brand small{display:block;font-size:.7rem;color:#c5d3e4;margin-top:4px}
+.quote-brand img{width:52px;height:52px}
+.quote-private-actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap;font-size:.75rem}
+.quote-private-actions span{color:#c5d3e4}
+.quote-private-actions a{color:#fff;padding:12px 0}
+.quote-private-footer{background:#0A1628;padding:35px 0;color:#c5d3e4;font-size:.8rem;line-height:1.8}
+.quote-private-footer strong,.quote-private-footer a{color:#fff}
+.quote-private-footer p{margin:10px 0;max-width:750px}
+.quote-private .startup-builder-section{padding-top:40px}
+@media(max-width:850px){
+.launch-segment{grid-template-columns:1fr;gap:24px}
+.launch-segment-intro{position:static}
+.launch-segment-icon{float:left;margin:0 20px 15px 0}
+.launch-segment-intro a{padding:5px 0}
+.launch-segment-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
+.launch-next-grid{grid-template-columns:1fr;gap:35px}
+}
+@media(max-width:560px){
+.launch-introduction{padding-top:40px}
+.launch-segment-nav{grid-template-columns:1fr;gap:8px}
+.launch-segment-nav a{flex-direction:row;align-items:center;padding:13px 16px;gap:16px;min-height:48px}
+.launch-segment{padding:32px 0}
+.launch-service-grid{grid-template-columns:1fr;gap:12px}
+.launch-service-card{padding:22px}
+.launch-service-card p{font-size:.9rem}
+.launch-staff-access{flex-direction:column;align-items:stretch}
+.launch-next{padding:40px 0}
+.quote-private-header > .container{align-items:flex-start;flex-direction:column;gap:12px}
+.quote-private-actions{gap:18px}
+.quote-private-actions span{width:100%}
+.quote-private .startup-summary input:not([type=checkbox]),.quote-private .startup-summary select,.quote-private .startup-summary textarea{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){.launch-service-card,.launch-segment-nav a{transition:none}.launch-service-card:hover,.launch-segment-nav a:hover{transform:none}}
