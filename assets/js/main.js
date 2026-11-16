@@ -39,8 +39,8 @@
   },
   {
     "market": "UAE",
-    "text": "Small Business Relief: eligible resident persons with revenue up to AED 3m may elect for qualifying tax periods ending by 31 December 2029. Exclusions and conditions apply.",
-    "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-extension-of-small-business-relief-for-corporate-tax-purposes-until-31-december-2029/"
+    "text": "30 October 2026: UAE MoF announced a revised e-invoicing penalty framework. For an Issuer or Recipient's implementation non-compliance, AED 5,000 applies initially, then AED 5,000 per month or part, capped at AED 50,000 in any 12 consecutive months.",
+    "url": "https://mof.gov.ae/en/news/mof-announces-updated-administrative-penalties-related-to-the-uae-einvoicing-system-to-enhance-clarity-and-support-business-compliance/"
   },
   {
     "market": "UAE",
