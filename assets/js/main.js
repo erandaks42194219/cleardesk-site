@@ -49,8 +49,8 @@
   },
   {
     "market": "UAE",
-    "text": "16 November 2026: the FTA lists the final deadline for affected Excise Tax registrants to file their Excise return. Confirm your assigned obligation in EmaraTax.",
-    "url": "https://tax.gov.ae/en/announcements.aspx"
+    "text": "Small Business Relief: eligible Taxable Persons with annual revenue not exceeding AED 3m may elect for qualifying tax periods ending by 31 December 2029. Conditions and exclusions apply.",
+    "url": "https://mof.gov.ae/en/news/ministry-of-finance-announces-extension-of-small-business-relief-for-corporate-tax-purposes-until-31-december-2029/"
   },
   {
     "market": "UAE",
