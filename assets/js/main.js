@@ -24,8 +24,8 @@
   },
   {
     "market": "NZ",
-    "text": "3 November 2026: MBIE launched a trial of the NZBN Business Passport, a mobile digital credential for verifying business identity and authority. The initial trial is limited to selected Westpac business customers.",
-    "url": "https://www.mbie.govt.nz/about/news/new-digital-credential-cuts-paperwork-for-kiwi-businesses"
+    "text": "21–22 November 2026: myIR and Inland Revenue self-service phone lines are expected to be unavailable from 3pm Saturday until around 9am Sunday for a planned system test. Plan filing or payments around the outage.",
+    "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
   },
   {
     "market": "NZ",
