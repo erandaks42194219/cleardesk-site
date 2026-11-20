@@ -29,8 +29,8 @@
   },
   {
     "market": "NZ",
-    "text": "20 November 2026: October deductions are due for small-to-medium employers, and 1–15 November deductions are due for large employers.",
-    "url": "https://www.ird.govt.nz/employing-staff/payday-filing/paying-deductions-to-inland-revenue"
+    "text": "18 November 2026: NZ eInvoicing reported that 78 central government agencies can receive eInvoices, 36 can send them, and 67 software products are enabled. Businesses supplying government or larger customers can check whether their accounting software is ready.",
+    "url": "https://www.einvoicing.govt.nz/einvoicing/what-is-einvoicing/growth-metrics"
   },
   {
     "market": "UAE",
