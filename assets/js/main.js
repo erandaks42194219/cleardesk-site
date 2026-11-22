@@ -24,7 +24,7 @@
   },
   {
     "market": "NZ",
-    "text": "21–22 and 28–29 November 2026: myIR, Gateway Services and Inland Revenue's self-service phone line will be unavailable from 3pm Saturday until around 9am Sunday during planned testing. Plan filing and payments around both outages.",
+    "text": "28–29 November 2026: myIR, Gateway Services and Inland Revenue's self-service phone line will be unavailable from 3pm Saturday until around 9am Sunday during planned testing. Plan filing and payments around the outage.",
     "url": "https://www.ird.govt.nz/updates/news-folder/2026/planned-service-outages-november"
   },
   {
